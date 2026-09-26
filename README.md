@@ -5,10 +5,10 @@ Vercel에서 이 저장소를 가져오면 Framework Preset **Other**, Build/Out
 
 ## 다운로드
 
-설치 파일(약 190 MB)은 이 저장소의 **GitHub Releases**에 올립니다. `/download` 페이지가 릴리스 목록을 보여주고,
-모든 다운로드는 hCaptcha 확인을 거친 뒤 시작됩니다. 다운로드가 시작되면 설문 창이 뜹니다.
+설치 파일(약 190 MB)은 이 저장소의 **GitHub Releases**에 올리고, 사이트에 보일 목록은
+`data/releases.json`에 **직접** 적습니다(최신이 맨 위). 새 버전이 나오면 릴리스에 파일을 올리고 이 파일에 한 항목을 추가하면 됩니다.
+모든 다운로드는 hCaptcha 확인을 거친 뒤 시작되고, 다운로드가 시작되면 설문 창이 뜹니다.
 
-- 릴리스를 새로 만들면 5분 안에 사이트에 반영됩니다.
 - 저장소가 **공개(public)** 여야 설치 파일을 누구나 받을 수 있습니다.
 
 ## Vercel 환경 변수
@@ -19,8 +19,6 @@ Vercel에서 이 저장소를 가져오면 Framework Preset **Other**, Build/Out
 | `HCAPTCHA_SECRET` | hCaptcha 시크릿 |
 | `DISCORD_BOT_TOKEN` | 설문 응답을 DM으로 보낼 봇의 **토큰** (Developer Portal → Bot → Reset Token) |
 | `DISCORD_USER_ID` | 응답을 받을 사람의 디스코드 사용자 ID. 비우면 봇 애플리케이션 소유자에게 보냅니다 |
-| `GITHUB_REPO` | 릴리스를 읽을 저장소. 기본값 `a2den1/odit-web` |
-| `GITHUB_TOKEN` | (선택) GitHub API 한도를 늘릴 때 |
 
 hCaptcha 키가 없으면 hCaptcha 공식 테스트 키로 동작합니다(누구나 통과). 실제 운영 전에 꼭 넣으세요.
 

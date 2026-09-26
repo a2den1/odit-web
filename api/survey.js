@@ -50,7 +50,7 @@ module.exports = async (req, res) => {
 
   const fields = [
     found && { name: '알게 된 곳', value: found, inline: true },
-    editor && { name: '쓰던 편집기', value: editor, inline: true },
+    editor && { name: '만드는 영상', value: editor, inline: true },
     { name: '받은 버전', value: clean(ticket.v, 30) || '-', inline: true },
     sns && { name: 'SNS', value: sns },
     handle && { name: '디스코드', value: handle, inline: true },

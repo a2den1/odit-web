@@ -196,7 +196,7 @@
 
   /* ------------------------------------------------------ survey */
   const FOUND = ['유튜브', '디스코드', '인스타그램', '틱톡', '지인 추천', '검색', '기타']
-  const EDITORS = ['캡컷', '프리미어 프로', '다빈치 리졸브', '브루', '블로', '처음이에요']
+  const MAKES = ['브이로그', '게임', '쇼츠 · 릴스', '교육 · 강의', '음악', '기타']
   const chips = (name, list) => `<div class="chips" data-name="${name}">${list.map((v) =>
     `<button type="button" class="chip" aria-pressed="false">${v}</button>`).join('')}</div>`
 
@@ -206,7 +206,7 @@
       <h2 class="modal-title">설문에 참여해주세요!</h2>
       <form class="survey" novalidate>
         <label class="field"><span>ODIT를 어디서 알게 되셨나요?</span>${chips('found', FOUND)}</label>
-        <label class="field"><span>원래 쓰던 편집기</span>${chips('editor', EDITORS)}</label>
+        <label class="field"><span>주로 만드는 영상</span>${chips('editor', MAKES)}</label>
         <label class="field"><span>SNS 링크</span><input name="sns" type="url" maxlength="300" placeholder="유튜브 · 인스타그램 · 틱톡 주소" autocomplete="url"></label>
         <label class="field"><span>피드백</span><textarea name="feedback" rows="4" maxlength="1800" placeholder="바라는 기능, 불편한 점, 하고 싶은 말"></textarea></label>
         <label class="field"><span>디스코드 아이디</span><input name="discord" maxlength="60" placeholder="답장 받을 아이디 (선택)" autocomplete="off"></label>

@@ -2,8 +2,6 @@
 // deployed as endpoints by Vercel.
 const crypto = require('crypto')
 
-const REPO = process.env.GITHUB_REPO || 'a2den1/odit-web'
-
 // hCaptcha's published test pair: always passes. Used until real keys are set.
 const TEST_SITEKEY = '10000000-ffff-ffff-ffff-000000000001'
 const TEST_SECRET = '0x0000000000000000000000000000000000000000'
@@ -34,34 +32,11 @@ async function readBody(req) {
 }
 
 /* ------------------------------------------------------------ releases */
-
-let cache = { at: 0, data: null }
+// The list is maintained by hand in data/releases.json — newest first.
+const RELEASES = require('../data/releases.json')
 
 async function getReleases() {
-  if (cache.data && Date.now() - cache.at < 5 * 60 * 1000) return cache.data
-  const headers = { Accept: 'application/vnd.github+json', 'User-Agent': 'odit-web' }
-  if (process.env.GITHUB_TOKEN) headers.Authorization = 'Bearer ' + process.env.GITHUB_TOKEN
-  const r = await fetch(`https://api.github.com/repos/${REPO}/releases?per_page=30`, { headers })
-  if (!r.ok) {
-    if (cache.data) return cache.data
-    throw new Error('github ' + r.status)
-  }
-  const list = await r.json()
-  const data = list
-    .filter((x) => !x.draft)
-    .map((x) => ({
-      tag: x.tag_name,
-      version: String(x.tag_name || '').replace(/^v/i, ''),
-      name: x.name || x.tag_name,
-      date: x.published_at,
-      prerelease: !!x.prerelease,
-      notes: String(x.body || '').slice(0, 4000),
-      assets: (x.assets || [])
-        .filter((a) => !/\.(blockmap|yml|yaml)$/i.test(a.name))
-        .map((a) => ({ id: a.id, name: a.name, size: a.size, url: a.browser_download_url })),
-    }))
-  cache = { at: Date.now(), data }
-  return data
+  return RELEASES.map((r) => ({ prerelease: false, notes: '', ...r, name: 'ODIT ' + r.version }))
 }
 
 /** Public view of the releases — download URLs stay on the server. */
@@ -113,5 +88,5 @@ function readTicket(ticket) {
 const clientIp = (req) => String(req.headers['x-forwarded-for'] || '').split(',')[0].trim() || req.socket?.remoteAddress || ''
 
 module.exports = {
-  REPO, SITEKEY, send, readBody, getReleases, publicReleases, verifyCaptcha, makeTicket, readTicket, clientIp,
+  SITEKEY, send, readBody, getReleases, publicReleases, verifyCaptcha, makeTicket, readTicket, clientIp,
 }
