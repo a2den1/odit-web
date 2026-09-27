@@ -29,7 +29,7 @@ async function recipientId() {
   return recipient
 }
 
-// POST { ticket, found, editor, sns, discord, feedback, website(honeypot) }
+// POST { ticket, found, editor, sns, feedback, website(honeypot) }
 module.exports = async (req, res) => {
   if (req.method !== 'POST') return send(res, 405, { error: 'POST only' })
   const b = await readBody(req)
@@ -42,7 +42,6 @@ module.exports = async (req, res) => {
   const found = clean(b.found, 40)
   const editor = clean(b.editor, 40)
   const sns = clean(b.sns, 300)
-  const handle = clean(b.discord, 60)
   const feedback = clean(b.feedback, 1800)
   if (!found && !editor && !sns && !feedback) return send(res, 400, { error: '하나 이상 적어 주세요' })
 
@@ -53,7 +52,6 @@ module.exports = async (req, res) => {
     editor && { name: '만드는 영상', value: editor, inline: true },
     { name: '받은 버전', value: clean(ticket.v, 30) || '-', inline: true },
     sns && { name: 'SNS', value: sns },
-    handle && { name: '디스코드', value: handle, inline: true },
   ].filter(Boolean)
 
   try {

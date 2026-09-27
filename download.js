@@ -41,6 +41,8 @@
   })
 
   /* ------------------------------------------------------ /download page */
+  const inline = (t) => esc(t).replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>').replace(/`([^`]+)`/g, '<code>$1</code>')
+
   function notesHtml(md) {
     const out = []
     let list = false
@@ -49,13 +51,13 @@
       const bullet = line.match(/^[-*]\s+(.*)$/)
       if (bullet) {
         if (!list) { out.push('<ul>'); list = true }
-        out.push(`<li>${esc(bullet[1])}</li>`)
+        out.push(`<li>${inline(bullet[1])}</li>`)
         continue
       }
       if (list) { out.push('</ul>'); list = false }
       if (!line) continue
-      const h = line.match(/^#{1,6}\s+(.*)$/)
-      out.push(h ? `<h4>${esc(h[1])}</h4>` : `<p>${esc(line)}</p>`)
+      const h = line.match(/^#{1,6}\s+(.*)$/) || line.match(/^\*\*([^*]+)\*\*$/)
+      out.push(h ? `<h4>${esc(h[1])}</h4>` : `<p>${inline(line)}</p>`)
     }
     if (list) out.push('</ul>')
     return out.join('')
@@ -149,7 +151,7 @@
   async function startDownload(assetId, label) {
     const body = openModal(`
       <h2 class="modal-title">${label ? `ODIT ${esc(label)} 다운로드` : 'ODIT 다운로드'}</h2>
-      <p class="modal-sub">사람인지 확인하면 바로 받아집니다.</p>
+      <p class="modal-sub">확인을 마치면 바로 받아집니다.</p>
       <div class="captcha-slot"><i class="fa-solid fa-spinner fa-spin"></i></div>
       <p class="modal-err" hidden></p>`)
     const slot = $('.captcha-slot', body)
@@ -167,7 +169,7 @@
     slot.innerHTML = '<div></div>'
     const wid = window.hcaptcha.render(slot.firstChild, {
       sitekey: state.sitekey,
-      theme: 'dark',
+      theme: 'light',
       callback: async (token) => {
         err.hidden = true
         try {
@@ -209,7 +211,6 @@
         <label class="field"><span>주로 만드는 영상</span>${chips('editor', MAKES)}</label>
         <label class="field"><span>SNS 링크</span><input name="sns" type="url" maxlength="300" placeholder="유튜브 · 인스타그램 · 틱톡 주소" autocomplete="url"></label>
         <label class="field"><span>피드백</span><textarea name="feedback" rows="4" maxlength="1800" placeholder="바라는 기능, 불편한 점, 하고 싶은 말"></textarea></label>
-        <label class="field"><span>디스코드 아이디</span><input name="discord" maxlength="60" placeholder="답장 받을 아이디 (선택)" autocomplete="off"></label>
         <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
         <p class="modal-err" hidden></p>
         <div class="modal-foot">
@@ -241,7 +242,6 @@
         editor: pick('editor'),
         sns: form.sns.value,
         feedback: form.feedback.value,
-        discord: form.discord.value,
         website: form.website.value,
       }
       if (!data.found && !data.editor && !data.sns.trim() && !data.feedback.trim()) {
