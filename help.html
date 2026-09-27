@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ODIT 도움말</title>
+  <meta name="description" content="ODIT 설치, 편집, 키프레임, 내보내기, 단축키, 문제 해결 안내.">
+  <meta name="theme-color" content="#131316">
+  <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icon.png">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link rel="stylesheet" href="/styles.css">
+  <script>document.documentElement.classList.add('js')</script>
+  <script src="/help.js" defer></script>
+</head>
+<body class="docs-body">
+
+<header class="top">
+  <div class="top-inner">
+    <a class="mark" href="/" aria-label="ODIT 처음으로"><img src="/assets/mark.png" alt="" width="39" height="24"></a>
+    <nav class="tabs">
+      <a href="/#features">기능</a>
+      <a href="/help" aria-current="page">도움말</a>
+      <a href="/download">다운로드</a>
+    </nav>
+  </div>
+</header>
+
+<div class="docs">
+  <aside class="docs-side" id="side">
+    <label class="docs-search">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="search" id="q" placeholder="검색" autocomplete="off" aria-label="도움말 검색">
+      <kbd>Ctrl K</kbd>
+    </label>
+    <nav class="docs-nav" id="nav"></nav>
+  </aside>
+  <button class="docs-menu" id="menu" type="button" aria-controls="side" aria-expanded="false"><i class="fa-solid fa-bars"></i><span>목차</span></button>
+
+  <main class="docs-main" id="main">
+
+<!-- ───────────────────────── 시작하기 ───────────────────────── -->
+<article data-page="intro" data-group="시작하기" data-title="ODIT 소개" data-icon="fa-house">
+  <h1>ODIT 소개</h1>
+  <p class="lead">ODIT는 Windows용 영상 편집기예요. 계정 없이, 인터넷 없이 내 PC에서만 돌아가고, 만든 영상과 프로젝트도 모두 내 PC에만 저장돼요.</p>
+  <h2 id="what">할 수 있는 것</h2>
+  <ul>
+    <li>영상·오디오·이미지·GIF를 타임라인에 올려 자르고 붙이기</li>
+    <li>텍스트, 도형, 마스크, 효과 57종, 룩 12종, 전환 26종</li>
+    <li>모든 숫자 값에 키프레임을 찍고 그래프로 움직임 다듬기</li>
+    <li>하드웨어 가속으로 MP4·MOV·GIF·WAV 내보내기</li>
+  </ul>
+  <h2 id="requirements">필요한 환경</h2>
+  <table>
+    <tr><th>운영체제</th><td>Windows 10 · 11 (64비트)</td></tr>
+    <tr><th>그래픽</th><td>WebGL2를 지원하는 그래픽 카드 (최근 몇 년 사이의 내장·외장 그래픽이면 대부분 돼요)</td></tr>
+    <tr><th>디스크</th><td>설치에 약 700 MB, 그리고 작업할 영상만큼의 여유 공간</td></tr>
+  </table>
+  <h2 id="files">가져올 수 있는 파일</h2>
+  <table>
+    <tr><th>영상</th><td>MP4, MOV, MKV, WEBM, AVI, M4V, WMV, FLV, TS, MPG</td></tr>
+    <tr><th>오디오</th><td>MP3, WAV, AAC, M4A, FLAC, OGG, OPUS</td></tr>
+    <tr><th>이미지</th><td>PNG, JPG, GIF(움직이는 GIF 포함), WEBP, BMP, TIFF</td></tr>
+  </table>
+</article>
+
+<article data-page="install" data-group="시작하기" data-title="설치와 업데이트" data-icon="fa-download">
+  <h1>설치와 업데이트</h1>
+  <p class="lead">다운로드 페이지에서 설치 파일을 받아 실행하면 끝이에요.</p>
+  <h2 id="download">설치 파일 받기</h2>
+  <ol>
+    <li><a href="/download">다운로드</a> 페이지에서 <b>다운로드</b>를 눌러요.</li>
+    <li>"사람입니다" 확인을 마치면 <code>ODIT-버전-setup.exe</code>가 받아져요.</li>
+    <li>받은 파일을 실행하고, 설치할 폴더를 고른 뒤 <b>설치</b>를 눌러요.</li>
+  </ol>
+  <div class="hint warn"><i class="fa-solid fa-shield-halved"></i><div><p><b>"Windows의 PC 보호" 창이 뜨면</b></p><p><b>추가 정보</b> → <b>실행</b>을 누르면 설치가 이어져요. 새로 나온 프로그램이라 Windows가 아직 모르는 파일일 때 나오는 안내예요.</p></div></div>
+  <h2 id="update">업데이트</h2>
+  <p>새 버전이 나오면 ODIT가 알아서 받아 두고, 다음에 켤 때 적용돼요. 직접 확인하려면 <b>파일</b> → <b>업데이트 확인</b>을 눌러요.</p>
+  <p>지난 버전이 필요하면 <a href="/download">다운로드</a> 페이지 아래의 <b>이전 버전</b>에서 받을 수 있어요.</p>
+  <h2 id="uninstall">지우기</h2>
+  <p>Windows <b>설정</b> → <b>앱</b> → <b>설치된 앱</b>에서 ODIT를 찾아 <b>제거</b>를 눌러요. 만든 프로젝트 파일(<code>.odit</code>)과 내보낸 영상은 지워지지 않아요.</p>
+</article>
+
+<article data-page="interface" data-group="시작하기" data-title="화면 구성" data-icon="fa-table-columns">
+  <h1>화면 구성</h1>
+  <p class="lead">편집 화면은 다섯 부분으로 나뉘어요.</p>
+  <figure class="doc-shot"><img src="/assets/shots/editor-sm.webp" alt="ODIT 편집 화면" width="800" height="490" loading="lazy"></figure>
+  <h2 id="topbar">위쪽 바</h2>
+  <p>홈 버튼, <b>파일</b> 메뉴, 프로젝트 이름, 실행 취소·다시 실행, 오른쪽 끝의 <b>내보내기</b>가 있어요. 프로젝트 이름은 눌러서 바로 바꿀 수 있어요.</p>
+  <h2 id="library">왼쪽: 라이브러리</h2>
+  <p>탭을 바꿔 가며 필요한 걸 꺼내 써요.</p>
+  <table>
+    <tr><th>미디어</th><td>가져온 영상·오디오·이미지. <b>+</b>나 파일 끌어다 놓기로 추가</td></tr>
+    <tr><th>텍스트 · 도형</th><td>스타일을 골라 재생헤드 위치에 추가</td></tr>
+    <tr><th>효과 · 전환</th><td>카드에 마우스를 올리면 미리보기, 클릭하거나 끌어다 놓아 적용</td></tr>
+    <tr><th>오디오</th><td>오디오 관련 도구</td></tr>
+    <tr><th>프리셋</th><td>저장해 둔 변형·효과·애니메이션 묶음</td></tr>
+    <tr><th>변수</th><td>여러 값에서 함께 쓰는 수식</td></tr>
+  </table>
+  <h2 id="preview">가운데: 미리보기</h2>
+  <p>화면 위에서 클립을 직접 끌어 옮기고, 모서리로 크기를, 위쪽 동그라미로 회전을 바꿔요. 아래 재생 바에서 재생, 반복, 화면 비율(16:9 · 9:16 · 1:1 · 4:5 · 21:9 …), 확대·맞춤을 고를 수 있어요.</p>
+  <h2 id="inspector">오른쪽: 속성</h2>
+  <p>선택한 클립의 값을 바꾸는 곳이에요. 클립 종류에 따라 <b>변형 · 색보정 · 효과 · 마스크 · 텍스트 · 도형 · 속도 · 오디오</b> 탭이 나와요. 아무것도 선택하지 않으면 시퀀스 크기와 프레임레이트를 바꿀 수 있어요.</p>
+  <h2 id="bottom">아래: 타임라인</h2>
+  <p>왼쪽 위 버튼이나 숫자 키로 세 가지 보기를 오가요.</p>
+  <table>
+    <tr><th><kbd>1</kbd> 타임라인</th><td>클립을 배치하고 자르는 기본 보기</td></tr>
+    <tr><th><kbd>2</kbd> 키프레임</th><td>속성별 키프레임을 한눈에 보고 옮기는 보기</td></tr>
+    <tr><th><kbd>3</kbd> 그래프</th><td>값의 곡선을 보면서 움직임을 다듬는 보기</td></tr>
+  </table>
+</article>
+
+<article data-page="first-video" data-group="시작하기" data-title="첫 영상 만들기" data-icon="fa-flag-checkered">
+  <h1>첫 영상 만들기</h1>
+  <p class="lead">영상 하나를 불러와서 자르고, 제목을 넣고, 내보내기까지 해 볼게요.</p>
+  <h2 id="new">1. 새 프로젝트</h2>
+  <p>ODIT를 켜면 홈 화면이 나와요. <b>새 프로젝트</b>를 누르면 빈 타임라인이 열려요.</p>
+  <h2 id="import">2. 영상 가져오기</h2>
+  <p>탐색기에서 영상 파일을 ODIT 창으로 끌어다 놓거나, <kbd>Ctrl</kbd> + <kbd>I</kbd>로 파일을 골라요. 왼쪽 <b>미디어</b>에 나타난 영상을 아래 타임라인으로 끌어다 놓아요.</p>
+  <h2 id="cut">3. 자르고 다듬기</h2>
+  <ul>
+    <li>자를 곳에 재생헤드를 두고 <kbd>S</kbd>를 누르면 둘로 나뉘어요.</li>
+    <li>필요 없는 조각을 클릭하고 <kbd>Delete</kbd>로 지워요. <kbd>Shift</kbd> + <kbd>Delete</kbd>는 빈자리까지 당겨 붙여요.</li>
+    <li>클립 양끝을 끌면 시작과 끝을 다듬을 수 있어요.</li>
+  </ul>
+  <h2 id="title">4. 제목 넣기</h2>
+  <p><kbd>T</kbd>를 누르면 재생헤드 위치에 텍스트가 생겨요. 미리보기에서 글자를 더블클릭해 내용을 고치고, 오른쪽 <b>텍스트</b> 탭에서 글꼴과 크기, 등장 애니메이션을 골라요.</p>
+  <h2 id="export">5. 내보내기</h2>
+  <p>오른쪽 위 <b>내보내기</b>(<kbd>Ctrl</kbd> + <kbd>E</kbd>)를 누르고 <b>유튜브 1080p</b>를 고른 뒤 <b>내보내기</b>를 눌러요. 끝나면 파일이 있는 폴더를 바로 열 수 있어요.</p>
+  <div class="hint"><i class="fa-solid fa-floppy-disk"></i><div><p><kbd>Ctrl</kbd> + <kbd>S</kbd>로 프로젝트를 저장해 두면 나중에 이어서 편집할 수 있어요. 저장하지 않아도 30초마다 자동으로 저장돼요.</p></div></div>
+</article>
+
+<!-- ───────────────────────── 편집 ───────────────────────── -->
+<article data-page="timeline" data-group="편집" data-title="타임라인" data-icon="fa-layer-group">
+  <h1>타임라인</h1>
+  <p class="lead">클립을 놓고, 자르고, 옮기는 곳이에요. 트랙 수에는 제한이 없어요.</p>
+  <h2 id="tools">도구</h2>
+  <table>
+    <tr><th><kbd>V</kbd> 선택</th><td>클립을 고르고 옮기고 양끝을 다듬어요</td></tr>
+    <tr><th><kbd>C</kbd> 자르기</th><td>클릭한 자리에서 클립을 잘라요</td></tr>
+    <tr><th><kbd>U</kbd> 잔물결 트림</th><td>끝을 다듬으면 뒤 클립들이 따라 움직여요</td></tr>
+    <tr><th><kbd>N</kbd> 롤 편집</th><td>붙어 있는 두 클립의 경계만 옮겨요</td></tr>
+    <tr><th><kbd>Y</kbd> 슬립</th><td>길이는 그대로 두고 보이는 구간만 바꿔요</td></tr>
+    <tr><th><kbd>H</kbd> 화면 이동</th><td>타임라인을 끌어서 둘러봐요</td></tr>
+  </table>
+  <h2 id="clips">클립 다루기</h2>
+  <ul>
+    <li>클립을 겹쳐 놓아도 원래 있던 클립은 사라지지 않고 앞뒤로 비켜나요.</li>
+    <li><kbd>B</kbd>로 자석을 켜면 클립 경계·재생헤드·마커에 딱 붙어요.</li>
+    <li><kbd>Alt</kbd> + <kbd>←</kbd> <kbd>→</kbd>로 선택한 클립을 한 프레임씩 밀어요.</li>
+    <li><kbd>Ctrl</kbd> + <kbd>D</kbd> 복제, <kbd>Ctrl</kbd> + <kbd>C</kbd> / <kbd>V</kbd> 복사·붙여넣기.</li>
+  </ul>
+  <h2 id="group">그룹과 복합 클립</h2>
+  <p><b>그룹</b>(<kbd>Ctrl</kbd> + <kbd>G</kbd>)은 여러 클립을 함께 선택·이동·삭제하게 묶어요. <b>복합 클립</b>(<kbd>Alt</kbd> + <kbd>G</kbd>)은 여러 클립을 하나의 클립으로 합쳐서, 효과나 키프레임을 묶음 전체에 한 번에 걸 수 있어요. 영상과 소리를 함께 움직이게 하려면 <b>연결</b>(<kbd>Ctrl</kbd> + <kbd>L</kbd>)을 써요.</p>
+  <h2 id="markers">마커와 구간</h2>
+  <p><kbd>M</kbd>으로 재생헤드에 마커를 찍어요. 마커는 끌어서 옮기고 이름과 색을 붙일 수 있어요. <kbd>I</kbd>와 <kbd>O</kbd>로 시작점과 끝점을 정하면 그 구간만 반복 재생하거나 내보낼 수 있어요.</p>
+  <h2 id="tracks">트랙</h2>
+  <p>트랙 머리의 버튼으로 숨기기·음소거·솔로·잠금을 켜고 꺼요. 트랙을 오른쪽 클릭하면 높이를 바꾸거나 트랙을 지울 수 있어요.</p>
+  <div class="hint"><i class="fa-solid fa-rotate-left"></i><div><p>실수했을 땐 <kbd>Ctrl</kbd> + <kbd>Z</kbd>. 200단계까지 되돌릴 수 있어요.</p></div></div>
+</article>
+
+<article data-page="text" data-group="편집" data-title="텍스트" data-icon="fa-font">
+  <h1>텍스트</h1>
+  <p class="lead">제목, 자막, 강조 문구를 넣어요.</p>
+  <h2 id="add">추가하기</h2>
+  <p>왼쪽 <b>텍스트</b> 탭에서 스타일(기본 · 제목 · 자막 · 외곽선 · 박스 · 네온 · 타자기 · 팝)을 누르거나 <kbd>T</kbd>를 눌러요. 재생헤드 위치에 4초짜리 텍스트가 생겨요.</p>
+  <h2 id="edit">내용과 모양</h2>
+  <ul>
+    <li>미리보기에서 글자를 더블클릭하면 그 자리에서 고칠 수 있어요.</li>
+    <li>오른쪽 <b>텍스트</b> 탭에서 글꼴·굵기·기울임·크기·색·정렬·자간·행간을 바꿔요.</li>
+    <li><b>외곽선 · 그림자</b>, <b>배경</b> 박스, 줄바꿈 너비도 여기서 정해요.</li>
+  </ul>
+  <h2 id="anim">등장과 퇴장</h2>
+  <p><b>애니메이션</b>에서 들어오고 나가는 방식을 골라요: 페이드, 팝, 위로 밀기, 옆으로 밀기, 떠오르기, 타자기, 닦아내기, 흐림. 길이도 따로 정할 수 있어요.</p>
+  <h2 id="counter">숫자 애니메이션</h2>
+  <p>조회수나 금액처럼 숫자가 올라가는 연출은 <b>숫자 애니메이션</b>을 켜고 시작값과 끝값을 적으면 돼요.</p>
+</article>
+
+<article data-page="shapes" data-group="편집" data-title="도형과 모핑" data-icon="fa-shapes">
+  <h1>도형과 모핑</h1>
+  <p class="lead">도형을 그리고, 꼭짓점을 직접 만지고, 다른 모양으로 부드럽게 바꿔요.</p>
+  <h2 id="add">도형 추가</h2>
+  <p>왼쪽 <b>도형</b> 탭에서 사각형 · 원 · 삼각형 · 선 · 화살표 · 별 · 하트를 골라요. 채우기는 단색·선형·원형 그라디언트, 테두리는 가운데·안쪽·바깥 정렬과 점선을 쓸 수 있어요.</p>
+  <h2 id="path">꼭짓점 편집</h2>
+  <p>도형을 선택하고 <kbd>P</kbd>를 누르면 꼭짓점 편집이 켜져요.</p>
+  <ul>
+    <li>꼭짓점을 끌어 옮겨요. 변 가운데 점을 끌면 변 전체가 움직여요.</li>
+    <li>선 위를 더블클릭하면 꼭짓점이 추가돼요.</li>
+    <li>선택한 꼭짓점 옆의 노란 점을 끌면 그 모서리만 둥글어져요.</li>
+  </ul>
+  <h2 id="morph">모핑</h2>
+  <ol>
+    <li>지금 모양에서 <b>지금 모양을 모핑 키로 저장</b>을 눌러요.</li>
+    <li>재생헤드를 옮기고 꼭짓점을 움직여 모양을 바꾼 뒤 다시 저장해요.</li>
+    <li>재생하면 두 모양 사이가 부드럽게 이어져요. 키마다 이징을 고를 수 있어요.</li>
+  </ol>
+  <div class="hint"><i class="fa-solid fa-circle-info"></i><div><p>꼭짓점 수가 달라도 ODIT가 알아서 맞춰서 자연스럽게 변해요.</p></div></div>
+</article>
+
+<article data-page="effects" data-group="편집" data-title="효과 · 룩 · 전환" data-icon="fa-wand-magic-sparkles">
+  <h1>효과 · 룩 · 전환</h1>
+  <p class="lead">모든 효과는 그래픽 카드에서 바로 계산돼서, 적용하자마자 미리보기에 보여요.</p>
+  <h2 id="effects">효과 57종</h2>
+  <p>색 보정, 커브, 흐림, 선명하게, 비네트, 그레인, 글리치, VHS, 빛샘, 크로마키, 오디오 스펙트럼 등이 있어요. 왼쪽 <b>효과</b> 탭에서 카드에 마우스를 올리면 결과를 먼저 보여주고, 클릭하면 선택한 클립에 적용돼요.</p>
+  <p>카드를 타임라인 빈 곳에 끌어다 놓으면 <b>효과 레이어</b>가 생겨서, 그 아래 트랙 전체에 효과가 걸려요.</p>
+  <h2 id="looks">룩 12종</h2>
+  <p>시네마틱, 느와르, 빈티지 필름, 골든 아워처럼 여러 효과를 미리 맞춰 둔 묶음이에요. 한 번 누르면 설정된 효과들이 한꺼번에 쌓이고, 쌓인 효과는 하나씩 다시 조절할 수 있어요.</p>
+  <h2 id="transitions">전환 26종</h2>
+  <p>디졸브, 닦기, 밀어내기, 덮기, 확대·축소, 글리치, 원형 열기 등이 있어요. <b>전환</b> 탭에서 두 클립이 만나는 곳으로 끌어다 놓아요. 길이는 오른쪽 <b>전환</b>에서 바꿀 수 있어요.</p>
+  <div class="hint"><i class="fa-solid fa-diamond"></i><div><p>효과의 모든 숫자 값에도 키프레임을 찍을 수 있어요. <a href="#keyframes">키프레임</a>을 보세요.</p></div></div>
+</article>
+
+<article data-page="mask" data-group="편집" data-title="마스크" data-icon="fa-circle-half-stroke">
+  <h1>마스크</h1>
+  <p class="lead">클립에서 보여줄 부분만 남겨요.</p>
+  <h2 id="shape">모양 고르기</h2>
+  <p>클립을 선택하고 오른쪽 <b>마스크</b> 탭에서 사각형 · 원 · 다각형 · 별 · 하트 · 직선 · 띠 중 하나를 골라요.</p>
+  <h2 id="adjust">위치와 크기</h2>
+  <p>미리보기에 나타난 마스크 테두리를 끌어서 옮기고, 모서리로 크기를, 위쪽 동그라미로 회전을 바꿔요. <b>가장자리</b>를 올리면 경계가 부드럽게 흐려져요.</p>
+  <h2 id="invert">반전과 트랙으로 가리기</h2>
+  <p><b>반전</b>을 켜면 안쪽 대신 바깥쪽이 남아요. <b>트랙으로 가리기</b>를 쓰면 다른 트랙의 클립 모양을 마스크로 써요.</p>
+</article>
+
+<article data-page="audio" data-group="편집" data-title="오디오와 속도" data-icon="fa-volume-high">
+  <h1>오디오와 속도</h1>
+  <h2 id="audio">오디오</h2>
+  <ul>
+    <li>오른쪽 <b>오디오</b> 탭에서 볼륨(dB), 좌우 위치, 페이드 인·아웃을 조절해요.</li>
+    <li>3밴드 EQ와 저음 잡음 줄이기가 있어요.</li>
+    <li><b>볼륨 맞추기</b>를 누르면 파형을 보고 알맞은 크기로 맞춰 줘요.</li>
+    <li>영상에서 소리만 떼어 따로 편집하려면 <b>오디오 분리</b>를 써요.</li>
+  </ul>
+  <h2 id="speed">속도</h2>
+  <ul>
+    <li>오른쪽 <b>속도</b> 탭에서 0.1배부터 20배까지 바꿔요. 역재생과 피치 유지도 여기 있어요.</li>
+    <li><b>속도 램프</b>는 구간마다 빨라지고 느려지는 변속이에요. 프리셋 4가지로 바로 시작할 수 있어요.</li>
+    <li><b>정지 화면</b>을 누르면 재생헤드 프레임이 멈춘 채로 끼워져요.</li>
+  </ul>
+</article>
+
+<!-- ───────────────────────── 애니메이션 ───────────────────────── -->
+<article data-page="keyframes" data-group="애니메이션" data-title="키프레임" data-icon="fa-diamond">
+  <h1>키프레임</h1>
+  <p class="lead">어떤 값이 언제 얼마인지 찍어 두면, 그 사이를 ODIT가 자연스럽게 채워요.</p>
+  <h2 id="what">무엇이든 움직일 수 있어요</h2>
+  <p>위치·크기·회전·불투명도뿐 아니라 글자 크기, 자간, 도형 모서리, 꼭짓점 수, 효과의 모든 값까지 키프레임을 찍을 수 있어요.</p>
+  <h2 id="add">찍는 방법</h2>
+  <ul>
+    <li>오른쪽 속성 이름 옆의 <b>◆</b>를 누르면 그 값에 키프레임이 생겨요. 이후 재생헤드를 옮기고 값을 바꾸면 새 키프레임이 자동으로 찍혀요.</li>
+    <li>타임라인에서 클립을 선택하고 <kbd>Alt</kbd> + <kbd>K</kbd>를 누르면 재생헤드 위치에 바로 찍혀요. 다시 누르면 지워져요.</li>
+    <li><kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>K</kbd>는 변형 전체에 한꺼번에 찍어요.</li>
+  </ul>
+  <h2 id="sheet">키프레임 보기</h2>
+  <p><kbd>2</kbd>를 누르면 속성마다 한 줄씩 키프레임이 보여요. 끌어서 시간을 옮기고, 빈 곳을 끌어 여러 개를 한꺼번에 고르고, 빈 곳을 더블클릭해 추가해요. <kbd>Delete</kbd>로 지우고, <kbd>Alt</kbd> + <kbd>←</kbd> <kbd>→</kbd>로 한 프레임씩 밀어요.</p>
+  <div class="hint"><i class="fa-solid fa-circle-info"></i><div><p>타임라인의 클립 위에서도 키프레임 점을 바로 끌어 옮기거나 지울 수 있어요.</p></div></div>
+</article>
+
+<article data-page="graph" data-group="애니메이션" data-title="그래프와 이징" data-icon="fa-bezier-curve">
+  <h1>그래프와 이징</h1>
+  <p class="lead">값이 시간에 따라 어떻게 변하는지 곡선으로 보면서 움직임의 느낌을 다듬어요.</p>
+  <h2 id="graph">그래프 보기</h2>
+  <p><kbd>3</kbd>을 누르면 선택한 클립의 값 곡선이 나와요.</p>
+  <ul>
+    <li>점을 끌면 시간과 값이 함께 움직여요. <kbd>Alt</kbd>를 누른 채 끌면 값만, <kbd>Shift</kbd>를 누른 채 끌면 시간만 바뀌어요.</li>
+    <li>점을 선택하면 양옆에 핸들이 나와요. 핸들을 끌어 곡선 모양을 직접 만들어요.</li>
+  </ul>
+  <h2 id="easing">이징 41종</h2>
+  <p>직선, 부드럽게, 빠르게, 튕기기, 탄성, 단계 등 41가지가 있고, 모든 곡선이 작은 그림으로 보여요. 키프레임을 선택하면 위에 떠오르는 막대에서 자주 쓰는 곡선 6개를 한 번에 고를 수 있어요.</p>
+  <p>키프레임을 오른쪽 클릭하면 이징을 고르거나 시간을 뒤집을 수 있어요.</p>
+</article>
+
+<article data-page="pivot" data-group="애니메이션" data-title="피벗과 레이어 연결" data-icon="fa-link">
+  <h1>피벗과 레이어 연결</h1>
+  <h2 id="pivot">피벗</h2>
+  <p>회전과 크기 조절의 중심점이에요. 미리보기의 노란 십자를 끌면 그림은 그대로 두고 중심만 옮겨져요. 오른쪽 <b>피벗</b>의 9칸 격자를 누르면 모서리나 가운데로 바로 맞춰지고, 더블클릭하면 가운데로 돌아가요. 피벗도 키프레임을 찍을 수 있어요.</p>
+  <h2 id="parent">레이어 연결</h2>
+  <p>한 클립을 다른 클립에 붙이면 부모의 위치·회전·크기·불투명도를 따라 움직여요. 오른쪽 <b>레이어 연결</b>에서 부모를 고르고, 따라갈 항목을 하나씩 켜고 끌 수 있어요.</p>
+  <div class="hint"><i class="fa-solid fa-circle-info"></i><div><p>서로가 서로를 따라가는 연결은 자동으로 막혀요.</p></div></div>
+</article>
+
+<article data-page="onion" data-group="애니메이션" data-title="양파 스킨" data-icon="fa-clone">
+  <h1>양파 스킨</h1>
+  <p class="lead">앞뒤 프레임을 반투명하게 겹쳐 보여줘서, 움직임의 흐름을 한눈에 볼 수 있어요.</p>
+  <h2 id="use">켜고 끄기</h2>
+  <p><kbd>A</kbd>를 누르거나 재생 바의 양파 스킨 버튼을 눌러요. 지난 프레임은 붉게, 다음 프레임은 푸르게 보여요.</p>
+  <h2 id="settings">설정</h2>
+  <p>재생 바에서 앞뒤로 몇 장을 보여줄지, 프레임 간격, 진하기를 바꿔요.</p>
+  <div class="hint"><i class="fa-solid fa-gauge-high"></i><div><p>일시정지했을 때만 그려져서 재생이 느려지지 않아요.</p></div></div>
+</article>
+
+<article data-page="variables" data-group="애니메이션" data-title="변수와 수식" data-icon="fa-square-root-variable">
+  <h1>변수와 수식</h1>
+  <p class="lead">숫자 칸에는 숫자 대신 수식을 쓸 수 있어요. 다른 클립의 값을 가져와서 여러 값을 서로 연결할 수 있어요.</p>
+  <h2 id="basic">수식 쓰기</h2>
+  <p>아무 숫자 칸에 <code>20 + 123</code>처럼 적으면 <code>143</code>이 돼요.</p>
+  <table>
+    <tr><th>연산자</th><td><code>+ - * / % ^ ( )</code>, 비교 <code>&lt; &gt; &lt;= &gt;= == !=</code>, 논리 <code>&amp;&amp; || !</code></td></tr>
+    <tr><th>함수</th><td><code>sqrt abs round floor ceil sign sin cos tan pow log min max clamp lerp if step wrap</code> 등</td></tr>
+    <tr><th>상수</th><td><code>pi e tau</code></td></tr>
+  </table>
+  <h2 id="clip">다른 클립의 값</h2>
+  <p><code>{속성:(클립 이름)}</code>으로 가져와요. 예를 들어 <code>{x:(이미지1)} / 2</code>는 "이미지1" 클립 가로 위치의 절반이에요.</p>
+  <p>쓸 수 있는 속성: <code>x y scale size scalex scaley rot rotation opacity start dur duration end t</code></p>
+  <h2 id="vars">변수 만들기</h2>
+  <p>왼쪽 <b>변수</b> 탭에서 <b>변수 추가</b>를 누르고 이름과 수식을 적어요. 다른 칸에서 <code>{이름}</code>으로 불러와요. 여러 줄로 쓸 수도 있어요.</p>
+<pre><code>a = {x:(이미지1)}
+b = if(a &gt; 500, 2, 1)
+a / b</code></pre>
+  <div class="hint"><i class="fa-solid fa-circle-info"></i><div><p>값은 재생헤드 위치를 기준으로 계산돼요. 참조하는 클립이 움직이면 결과도 따라 움직여요.</p></div></div>
+</article>
+
+<!-- ───────────────────────── 내보내기 ───────────────────────── -->
+<article data-page="export" data-group="내보내기 · 프로젝트" data-title="내보내기" data-icon="fa-file-export">
+  <h1>내보내기</h1>
+  <p class="lead">오른쪽 위 <b>내보내기</b>나 <kbd>Ctrl</kbd> + <kbd>E</kbd>로 열어요.</p>
+  <h2 id="presets">프리셋</h2>
+  <table>
+    <tr><th>유튜브 1080p</th><td>1920×1080 · MP4</td></tr>
+    <tr><th>유튜브 4K</th><td>3840×2160 · MP4</td></tr>
+    <tr><th>쇼츠 · 릴스</th><td>1080×1920 · MP4</td></tr>
+    <tr><th>인스타 정사각</th><td>1080×1080 · MP4</td></tr>
+    <tr><th>고화질 마스터</th><td>ProRes · MOV</td></tr>
+    <tr><th>GIF</th><td>480p · 15fps</td></tr>
+    <tr><th>오디오만</th><td>WAV</td></tr>
+  </table>
+  <h2 id="settings">직접 정하기</h2>
+  <p>너비·높이, 프레임레이트, 구간(시작·끝), 화질을 바꿀 수 있어요. 화질 막대를 오른쪽으로 옮길수록 파일이 커지고 선명해져요. 아래에 예상 용량이 보여요.</p>
+  <h2 id="codec">인코더</h2>
+  <p>기본은 그래픽 카드를 쓰는 하드웨어 H.264라 빨라요. <b>고급 설정</b>에서 HEVC, NVENC, AMF, QSV, VP9, ProRes, 소프트웨어 H.264를 고르고 비트레이트와 오디오 음질도 정할 수 있어요.</p>
+  <h2 id="done">진행과 완료</h2>
+  <p>진행률과 남은 시간이 보이고, 언제든 취소할 수 있어요. 끝나면 <b>폴더 열기</b>로 파일을 바로 찾을 수 있어요.</p>
+</article>
+
+<article data-page="projects" data-group="내보내기 · 프로젝트" data-title="저장과 복구" data-icon="fa-floppy-disk">
+  <h1>저장과 복구</h1>
+  <h2 id="save">프로젝트 파일</h2>
+  <p>편집한 내용은 <code>.odit</code> 파일로 저장돼요. <kbd>Ctrl</kbd> + <kbd>S</kbd> 저장, <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>S</kbd> 다른 이름으로 저장, <kbd>Ctrl</kbd> + <kbd>O</kbd>로 열어요. 프로젝트 파일에는 원본 영상이 들어가지 않고 위치만 기록돼요.</p>
+  <div class="hint warn"><i class="fa-solid fa-triangle-exclamation"></i><div><p>원본 영상 파일을 옮기거나 지우면 프로젝트에서 찾지 못해요. 작업이 끝날 때까지 원본은 그 자리에 두세요.</p></div></div>
+  <h2 id="auto">자동 저장</h2>
+  <p>30초마다 자동으로 저장돼요. 프로그램이 갑자기 꺼졌다면, 다음에 켤 때 <b>자동 저장된 작업이 있습니다</b>라는 창이 떠서 이어서 할 수 있어요. 편집 중에 그냥 창을 닫아도 작업이 저장되고 홈 화면 목록에 남아요.</p>
+  <h2 id="recent">최근 프로젝트</h2>
+  <p>홈 화면에 최근에 연 프로젝트가 나와요. 눌러서 바로 이어서 편집해요.</p>
+  <h2 id="presets">프리셋으로 재사용</h2>
+  <p>자주 쓰는 변형·효과·텍스트 스타일·도형 스타일·애니메이션·오디오 설정은 왼쪽 <b>프리셋</b> 탭에서 <b>+</b>로 저장해 두고, 다른 클립에 한 번에 입힐 수 있어요.</p>
+</article>
+
+<!-- ───────────────────────── 도움 ───────────────────────── -->
+<article data-page="shortcuts" data-group="도움" data-title="단축키" data-icon="fa-keyboard">
+  <h1>단축키</h1>
+  <p class="lead">ODIT 안에서 <kbd>?</kbd>를 누르면 전체 목록이 나와요. <b>파일</b> → <b>설정</b> → <b>단축키</b>에서 원하는 키로 바꿀 수 있어요.</p>
+  <h2 id="play">재생</h2>
+  <table class="keys">
+    <tr><td><kbd>Space</kbd></td><td>재생 / 일시정지</td></tr>
+    <tr><td><kbd>←</kbd> <kbd>→</kbd></td><td>한 프레임 뒤로 / 앞으로</td></tr>
+    <tr><td><kbd>Shift</kbd> + <kbd>←</kbd> <kbd>→</kbd></td><td>1초 뒤로 / 앞으로</td></tr>
+    <tr><td><kbd>↑</kbd> <kbd>↓</kbd></td><td>이전 / 다음 편집점</td></tr>
+    <tr><td><kbd>Home</kbd> <kbd>End</kbd></td><td>처음 / 끝으로</td></tr>
+    <tr><td><kbd>J</kbd> <kbd>K</kbd> <kbd>L</kbd></td><td>되감기 / 정지 / 반복 재생</td></tr>
+    <tr><td><kbd>I</kbd> <kbd>O</kbd></td><td>시작점 / 끝점 지정 (<kbd>Shift</kbd>와 함께 누르면 해제)</td></tr>
+  </table>
+  <h2 id="edit">편집</h2>
+  <table class="keys">
+    <tr><td><kbd>S</kbd></td><td>재생헤드에서 자르기</td></tr>
+    <tr><td><kbd>Delete</kbd></td><td>삭제</td></tr>
+    <tr><td><kbd>Shift</kbd> + <kbd>Delete</kbd></td><td>잔물결 삭제</td></tr>
+    <tr><td><kbd>Ctrl</kbd> + <kbd>C</kbd> <kbd>X</kbd> <kbd>V</kbd></td><td>복사 / 잘라내기 / 붙여넣기</td></tr>
+    <tr><td><kbd>Ctrl</kbd> + <kbd>D</kbd></td><td>복제</td></tr>
+    <tr><td><kbd>Ctrl</kbd> + <kbd>Z</kbd></td><td>실행 취소</td></tr>
+    <tr><td><kbd>Ctrl</kbd> + <kbd>Y</kbd></td><td>다시 실행</td></tr>
+    <tr><td><kbd>Ctrl</kbd> + <kbd>G</kbd></td><td>그룹 (<kbd>Shift</kbd>와 함께 누르면 해제)</td></tr>
+    <tr><td><kbd>Alt</kbd> + <kbd>G</kbd></td><td>복합 클립 만들기</td></tr>
+    <tr><td><kbd>Ctrl</kbd> + <kbd>L</kbd></td><td>연결</td></tr>
+    <tr><td><kbd>Alt</kbd> + <kbd>←</kbd> <kbd>→</kbd></td><td>클립 한 프레임 밀기</td></tr>
+    <tr><td><kbd>M</kbd></td><td>마커 추가</td></tr>
+    <tr><td><kbd>T</kbd></td><td>텍스트 추가</td></tr>
+  </table>
+  <h2 id="keys">키프레임</h2>
+  <table class="keys">
+    <tr><td><kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd></td><td>타임라인 / 키프레임 / 그래프 보기</td></tr>
+    <tr><td><kbd>Alt</kbd> + <kbd>K</kbd></td><td>재생헤드에 키프레임 (다시 누르면 삭제)</td></tr>
+    <tr><td><kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>K</kbd></td><td>변형 전체에 키프레임</td></tr>
+    <tr><td><kbd>A</kbd></td><td>양파 스킨</td></tr>
+    <tr><td><kbd>P</kbd></td><td>도형 꼭짓점 편집</td></tr>
+  </table>
+  <h2 id="tools">도구</h2>
+  <table class="keys">
+    <tr><td><kbd>V</kbd></td><td>선택</td></tr>
+    <tr><td><kbd>C</kbd></td><td>자르기 도구</td></tr>
+    <tr><td><kbd>U</kbd></td><td>잔물결 트림</td></tr>
+    <tr><td><kbd>N</kbd></td><td>롤 편집</td></tr>
+    <tr><td><kbd>Y</kbd></td><td>슬립</td></tr>
+    <tr><td><kbd>H</kbd></td><td>화면 이동</td></tr>
+    <tr><td><kbd>B</kbd></td><td>자석 켜기 / 끄기</td></tr>
+  </table>
+  <h2 id="view">보기 · 파일</h2>
+  <table class="keys">
+    <tr><td><kbd>Z</kbd></td><td>타임라인 전체 보기</td></tr>
+    <tr><td><kbd>F</kbd></td><td>선택한 곳에 맞춤</td></tr>
+    <tr><td><kbd>G</kbd></td><td>3분할 격자</td></tr>
+    <tr><td><kbd>Ctrl</kbd> + <kbd>=</kbd> <kbd>-</kbd></td><td>타임라인 확대 / 축소</td></tr>
+    <tr><td><kbd>Ctrl</kbd> + <kbd>N</kbd></td><td>새 프로젝트</td></tr>
+    <tr><td><kbd>Ctrl</kbd> + <kbd>O</kbd></td><td>열기</td></tr>
+    <tr><td><kbd>Ctrl</kbd> + <kbd>S</kbd></td><td>저장</td></tr>
+    <tr><td><kbd>Ctrl</kbd> + <kbd>I</kbd></td><td>미디어 가져오기</td></tr>
+    <tr><td><kbd>Ctrl</kbd> + <kbd>E</kbd></td><td>내보내기</td></tr>
+  </table>
+</article>
+
+<article data-page="troubleshooting" data-group="도움" data-title="문제 해결" data-icon="fa-screwdriver-wrench">
+  <h1>문제 해결</h1>
+  <h2 id="smartscreen">설치할 때 "Windows의 PC 보호"가 떠요</h2>
+  <p><b>추가 정보</b> → <b>실행</b>을 누르면 돼요. 새로 나온 프로그램이라 Windows가 아직 모르는 파일일 때 나오는 안내예요.</p>
+  <h2 id="black">미리보기가 검게 나와요</h2>
+  <ul>
+    <li>4K처럼 큰 영상은 처음 한두 초 동안 불러오는 중이라 검게 보일 수 있어요. 잠깐 기다리거나 재생헤드를 조금 움직여 보세요.</li>
+    <li>트랙의 눈 모양 버튼이 꺼져 있지 않은지 확인하세요.</li>
+    <li>재생 바에서 미리보기 화질을 1/2이나 1/4로 낮추면 무거운 영상도 부드럽게 보여요.</li>
+  </ul>
+  <h2 id="sound">소리가 안 나요</h2>
+  <ul>
+    <li>트랙의 음소거·솔로 버튼을 확인하세요. 다른 트랙에 솔로가 켜져 있으면 나머지는 들리지 않아요.</li>
+    <li>재생 바 오른쪽의 출력 볼륨을 확인하세요.</li>
+  </ul>
+  <h2 id="export">내보내기가 느리거나 실패해요</h2>
+  <ul>
+    <li><b>고급 설정</b>에서 인코더가 하드웨어 H.264인지 확인하세요. 소프트웨어 인코더는 느려요.</li>
+    <li>그래픽 카드 드라이버를 최신으로 바꾸면 하드웨어 인코딩이 안정돼요.</li>
+    <li>저장할 드라이브의 남은 공간을 확인하세요.</li>
+  </ul>
+  <h2 id="lost">작업이 날아갔어요</h2>
+  <p>ODIT를 다시 켜면 <b>자동 저장된 작업이 있습니다</b> 창이 떠요. 여기서 복구하면 마지막 30초 안쪽의 작업까지 돌아와요. 홈 화면의 최근 프로젝트 목록도 확인해 보세요.</p>
+  <h2 id="missing">프로젝트를 열었더니 영상이 없어요</h2>
+  <p>원본 영상 파일을 옮기거나 이름을 바꾸면 찾지 못해요. 원래 자리로 되돌리고 다시 열어 보세요.</p>
+</article>
+
+<article data-page="faq" data-group="도움" data-title="자주 묻는 질문" data-icon="fa-circle-question">
+  <h1>자주 묻는 질문</h1>
+  <h2 id="account">계정이 필요한가요?</h2>
+  <p>아니요. 가입이나 로그인 없이 바로 쓸 수 있어요.</p>
+  <h2 id="offline">인터넷이 없어도 되나요?</h2>
+  <p>네. 편집과 내보내기는 모두 내 PC에서 이뤄져요. 인터넷은 새 버전을 확인할 때만 써요.</p>
+  <h2 id="upload">영상이 어딘가로 올라가나요?</h2>
+  <p>아니요. 가져온 영상, 프로젝트, 내보낸 파일 모두 내 PC에만 있어요.</p>
+  <h2 id="mac">맥이나 리눅스에서도 되나요?</h2>
+  <p>지금은 Windows 10 · 11 (64비트)만 지원해요.</p>
+  <h2 id="feedback">의견은 어디로 보내나요?</h2>
+  <p>다운로드할 때 뜨는 설문에 적어 주시면 그대로 전달돼요. 바라는 기능이나 불편한 점, 무엇이든 좋아요.</p>
+</article>
+
+    <nav class="docs-pager" id="pager"></nav>
+  </main>
+
+  <aside class="docs-toc" id="toc"></aside>
+</div>
+
+</body>
+</html>
