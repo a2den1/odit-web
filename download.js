@@ -88,7 +88,6 @@
           <img src="/assets/logo.svg" alt="" width="64" height="64">
           <div>
             <h2>ODIT ${esc(L.version)}${L.prerelease ? ' <span class="tag">미리보기</span>' : ''}</h2>
-            <p>${day(L.date)} · Windows 10 · 11 (64비트)</p>
           </div>
         </div>
         <div class="rel-actions">${assetButtons(L, true)}</div>
@@ -99,7 +98,6 @@
         <article class="rel-row">
           <div class="rel-row-head">
             <strong>${esc(r.version)}</strong>${r.prerelease ? '<span class="tag">미리보기</span>' : ''}
-            <span class="rel-date">${day(r.date)}</span>
           </div>
           ${r.notes ? `<details class="rel-more"><summary>변경 사항</summary><div class="rel-notes">${notesHtml(r.notes)}</div></details>` : ''}
           <div class="rel-actions">${assetButtons(r, false)}</div>
@@ -119,7 +117,8 @@
     document.documentElement.classList.add('modal-open')
     modal.addEventListener('pointerdown', (e) => { if (e.target === modal) closeModal() })
     $('.modal-x', modal).addEventListener('click', closeModal)
-    requestAnimationFrame(() => modal && modal.classList.add('in'))
+    void modal.offsetWidth   // commit the hidden state so the fade-in runs
+    modal.classList.add('in')
     return $('.modal-body', modal)
   }
   function closeModal() {
@@ -150,8 +149,7 @@
 
   async function startDownload(assetId, label) {
     const body = openModal(`
-      <h2 class="modal-title">${label ? `ODIT ${esc(label)} 다운로드` : 'ODIT 다운로드'}</h2>
-      <p class="modal-sub">확인을 마치면 바로 받아집니다.</p>
+      <h2 class="modal-title">${label ? `ODIT ${esc(label)} 받기` : 'ODIT 받기'}</h2>
       <div class="captcha-slot"><i class="fa-solid fa-spinner fa-spin"></i></div>
       <p class="modal-err" hidden></p>`)
     const slot = $('.captcha-slot', body)
@@ -169,7 +167,7 @@
     slot.innerHTML = '<div></div>'
     const wid = window.hcaptcha.render(slot.firstChild, {
       sitekey: state.sitekey,
-      theme: 'light',
+      theme: 'dark',
       callback: async (token) => {
         err.hidden = true
         try {
@@ -204,7 +202,6 @@
 
   function openSurvey(dl) {
     const body = openModal(`
-      <div class="dl-started"><i class="fa-solid fa-circle-check"></i><span>${esc(dl.name)} 다운로드를 시작했어요</span></div>
       <h2 class="modal-title">설문에 참여해주세요!</h2>
       <form class="survey" novalidate>
         <label class="field"><span>ODIT를 어디서 알게 되셨나요?</span>${chips('found', FOUND)}</label>
@@ -255,7 +252,7 @@
         const r = await fetch('/api/survey', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })
         const j = await r.json().catch(() => ({}))
         if (!r.ok) throw new Error(j.error || '보내지 못했어요')
-        body.innerHTML = `<div class="thanks"><i class="fa-solid fa-heart"></i><h2 class="modal-title">고마워요!</h2><p class="modal-sub">보내주신 의견은 ODIT를 만드는 데 그대로 쓰입니다.</p><button class="btn" type="button">닫기</button></div>`
+        body.innerHTML = `<div class="thanks"><i class="fa-solid fa-heart"></i><h2 class="modal-title">고마워요!</h2><button class="btn" type="button">닫기</button></div>`
         $('.thanks .btn', body).addEventListener('click', closeModal)
       } catch (ex) {
         err.textContent = ex.message

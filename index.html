@@ -3,18 +3,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ODIT — 쉽고 강력한 영상 편집기</title>
-  <meta name="description" content="계정도 클라우드도 없이 내 PC에서 돌아가는 Windows 영상 편집기. 모든 값에 키프레임, GPU 효과 57종, 하드웨어 인코딩.">
-  <meta name="theme-color" content="#f2f0ea">
+  <title>ODIT</title>
+  <meta name="description" content="계정도 클라우드도 없이 내 PC에서 돌아가는 Windows 영상 편집기.">
+  <meta name="theme-color" content="#131316">
   <meta property="og:title" content="ODIT">
-  <meta property="og:description" content="쉽고 강력한 Windows 영상 편집기.">
+  <meta property="og:description" content="영상 편집의 모든 것, 내 PC에서 가볍게.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="/assets/shots/editor.webp">
   <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/assets/icon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans+KR:wght@400;500;700&display=swap">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
   <link rel="stylesheet" href="/styles.css">
   <script>document.documentElement.classList.add('js')</script>
@@ -23,144 +22,87 @@
 </head>
 <body>
 
-<div class="playhead" aria-hidden="true"><span class="playhead-tc mono">00:00:00:00</span></div>
-
 <header class="top">
-  <a class="mark" href="/" aria-label="ODIT 처음으로"><img src="/assets/mark.png" alt="" width="39" height="24"></a>
-  <nav class="top-nav">
-    <a href="/#scenes">기능</a>
-    <a class="top-cta" href="/download">다운로드</a>
-  </nav>
+  <div class="top-inner">
+    <a class="mark" href="/" aria-label="ODIT 처음으로"><img src="/assets/mark.png" alt="" width="39" height="24"></a>
+    <nav class="tabs">
+      <a href="/#features">기능</a>
+      <a href="/download">다운로드</a>
+    </nav>
+  </div>
 </header>
 
 <main>
 
   <section class="hero">
-    <h1 class="wordmark">ODIT</h1>
-    <div class="hero-side">
-      <p class="lede">쉽고 강력한<br><mark>영상 편집기</mark></p>
-      <div class="get">
-        <a class="btn" data-download="latest" href="/download"><span>Windows용 받기</span><i class="fa-solid fa-arrow-down"></i></a>
-        <p class="get-meta mono"><span data-download-meta>Windows 10 · 11 (64비트)</span></p>
-      </div>
-    </div>
-    <figure class="hero-shot">
-      <img src="/assets/shots/editor.webp" srcset="/assets/shots/editor-sm.webp 800w, /assets/shots/editor.webp 1600w" sizes="(max-width: 1240px) 100vw, 1200px" alt="ODIT 편집 화면" width="1600" height="980" fetchpriority="high">
-      <figcaption class="mono">여행 브이로그 &nbsp;·&nbsp; 00:00:01:18</figcaption>
+    <h1>영상 편집의 모든 것<br>내 PC에서 가볍게</h1>
+    <a class="btn" data-download="latest" href="/download">ODIT 받기</a>
+    <figure class="frame hero-shot reveal">
+      <img src="/assets/shots/editor.webp" srcset="/assets/shots/editor-sm.webp 800w, /assets/shots/editor.webp 1600w" sizes="(max-width: 1120px) 100vw, 1080px" alt="ODIT 편집 화면" width="1600" height="980" fetchpriority="high">
     </figure>
   </section>
 
-  <section class="statement">
-    <p>계정도 클라우드도 없이 <mark>내 PC에서만</mark> 돌아갑니다. 효과 57종과 전환 26종을 GPU로 바로 보면서 고르고, <mark>모든 값에 키프레임</mark>을 찍고, 하드웨어 인코딩으로 빠르게 내보냅니다. 30초마다 저장되고, 되돌리기는 200단계까지.</p>
+  <section class="big reveal" id="features">
+    <h2>끌어다 놓고 자르면<br>그걸로 충분해요</h2>
+    <figure class="frame"><img loading="lazy" src="/assets/shots/timeline.webp" srcset="/assets/shots/timeline-sm.webp 800w, /assets/shots/timeline.webp 1600w" sizes="(max-width: 1120px) 100vw, 1080px" alt="타임라인" width="1600" height="980"></figure>
   </section>
 
-  <section class="scenes" id="scenes">
-    <h2 class="scenes-title">하나씩 살펴보기</h2>
+  <section class="big reveal">
+    <h2>움직임은<br>곡선으로 다듬고</h2>
+    <figure class="frame"><img loading="lazy" src="/assets/shots/graph.webp" srcset="/assets/shots/graph-sm.webp 800w, /assets/shots/graph.webp 1600w" sizes="(max-width: 1120px) 100vw, 1080px" alt="그래프 에디터" width="1600" height="980"></figure>
+  </section>
 
-    <article class="scene">
-      <div class="scene-tc mono"><span>SCENE 01</span><span>00:00:00:00</span></div>
-      <div class="scene-body">
-        <h3>자르고, 붙이고, 다듬기</h3>
-        <p>끌어다 놓고, S로 자르고, 양끝을 당겨 다듬습니다. 잔물결·롤·슬립 편집, 스냅, 마커, 복합 클립까지. 클립 위에 썸네일과 파형, 키프레임이 바로 보입니다.</p>
-        <figure><img loading="lazy" src="/assets/shots/timeline.webp" srcset="/assets/shots/timeline-sm.webp 800w, /assets/shots/timeline.webp 1600w" sizes="(max-width: 900px) 100vw, 940px" alt="타임라인과 복합 클립" width="1600" height="980"></figure>
-      </div>
+  <section class="big reveal">
+    <h2>도형은<br>손으로 빚듯이</h2>
+    <figure class="frame"><img loading="lazy" src="/assets/shots/shape.webp" srcset="/assets/shots/shape-sm.webp 800w, /assets/shots/shape.webp 1600w" sizes="(max-width: 1120px) 100vw, 1080px" alt="꼭짓점 편집" width="1600" height="980"></figure>
+  </section>
+
+  <section class="big reveal">
+    <h2>색감은<br>한 번에 입히고</h2>
+    <figure class="frame"><img loading="lazy" src="/assets/shots/effects.webp" srcset="/assets/shots/effects-sm.webp 800w, /assets/shots/effects.webp 1600w" sizes="(max-width: 1120px) 100vw, 1080px" alt="룩 목록" width="1600" height="980"></figure>
+  </section>
+
+  <section class="grid">
+    <article class="card reveal">
+      <h3>소리에 맞춰<br>움직이는 스펙트럼</h3>
+      <img loading="lazy" src="/assets/shots/spectrum-sm.webp" alt="오디오 스펙트럼" width="800" height="490">
     </article>
-
-    <article class="scene">
-      <div class="scene-tc mono"><span>SCENE 02</span><span>00:00:04:12</span></div>
-      <div class="scene-body">
-        <h3>움직임은 곡선으로</h3>
-        <p>값의 곡선을 직접 보면서 베지어 핸들로 커브를 만듭니다. 이징 41종과 직접 조절하는 커브. 키프레임 시트에서 여러 키를 한 번에 옮깁니다.</p>
-        <figure><img loading="lazy" src="/assets/shots/graph.webp" srcset="/assets/shots/graph-sm.webp 800w, /assets/shots/graph.webp 1600w" sizes="(max-width: 900px) 100vw, 940px" alt="그래프 에디터" width="1600" height="980"></figure>
-      </div>
+    <article class="card reveal">
+      <h3>보여줄 곳만<br>남기는 마스크</h3>
+      <img loading="lazy" src="/assets/shots/mask-sm.webp" alt="마스크" width="800" height="490">
     </article>
-
-    <article class="scene">
-      <div class="scene-tc mono"><span>SCENE 03</span><span>00:00:08:03</span></div>
-      <div class="scene-body">
-        <h3>도형을 직접 빚기</h3>
-        <p>도형을 패스로 바꿔 꼭짓점과 변을 직접 끌고, 모서리마다 따로 둥글게 만듭니다. 꼭짓점 수가 달라도 모양 사이를 부드럽게 모핑합니다.</p>
-        <figure><img loading="lazy" src="/assets/shots/shape.webp" srcset="/assets/shots/shape-sm.webp 800w, /assets/shots/shape.webp 1600w" sizes="(max-width: 900px) 100vw, 940px" alt="꼭짓점 편집" width="1600" height="980"></figure>
-      </div>
+    <article class="card reveal">
+      <h3>글자에도<br>연출을</h3>
+      <img loading="lazy" src="/assets/shots/text-sm.webp" alt="텍스트" width="800" height="490">
     </article>
-
-    <article class="scene">
-      <div class="scene-tc mono"><span>SCENE 04</span><span>00:00:11:20</span></div>
-      <div class="scene-body">
-        <h3>한 번에 입히는 색</h3>
-        <p>색 보정부터 글리치, VHS, 빛샘까지 전부 GPU 셰이더입니다. 룩 12종은 한 번 누르면 여러 효과가 설정된 채로 쌓이고, 카드에 마우스를 올리면 결과를 먼저 보여줍니다.</p>
-        <figure><img loading="lazy" src="/assets/shots/effects.webp" srcset="/assets/shots/effects-sm.webp 800w, /assets/shots/effects.webp 1600w" sizes="(max-width: 900px) 100vw, 940px" alt="룩 목록" width="1600" height="980"></figure>
-      </div>
+    <article class="card reveal">
+      <h3>앞뒤 프레임을<br>겹쳐 보면서</h3>
+      <img loading="lazy" src="/assets/shots/onion-sm.webp" alt="양파 스킨" width="800" height="490">
     </article>
-
-    <article class="scene">
-      <div class="scene-tc mono"><span>SCENE 05</span><span>00:00:15:07</span></div>
-      <div class="scene-body">
-        <h3>소리를 그림으로</h3>
-        <p>오디오 스펙트럼을 막대·선·원형·물결·점으로 그립니다. 미리보기와 내보내기가 같은 스펙트럼을 읽어서, 보이는 그대로 영상에 담깁니다.</p>
-        <figure><img loading="lazy" src="/assets/shots/spectrum.webp" srcset="/assets/shots/spectrum-sm.webp 800w, /assets/shots/spectrum.webp 1600w" sizes="(max-width: 900px) 100vw, 940px" alt="오디오 스펙트럼 효과" width="1600" height="980"></figure>
-      </div>
+    <article class="card reveal">
+      <h3>값과 값을<br>수식으로 잇고</h3>
+      <img loading="lazy" src="/assets/shots/variables-sm.webp" alt="변수" width="800" height="490">
     </article>
-
-    <article class="scene">
-      <div class="scene-tc mono"><span>SCENE 06</span><span>00:00:18:26</span></div>
-      <div class="scene-body">
-        <h3>보여줄 곳만</h3>
-        <p>원·사각형·다각형·별·하트·직선·띠 마스크를 화면 위에서 바로 늘리고 돌립니다. 가장자리 흐림과 반전, 트랙으로 가리기까지.</p>
-        <figure><img loading="lazy" src="/assets/shots/mask.webp" srcset="/assets/shots/mask-sm.webp 800w, /assets/shots/mask.webp 1600w" sizes="(max-width: 900px) 100vw, 940px" alt="원형 마스크" width="1600" height="980"></figure>
-      </div>
-    </article>
-
-    <article class="scene">
-      <div class="scene-tc mono"><span>SCENE 07</span><span>00:00:22:15</span></div>
-      <div class="scene-body">
-        <h3>글자에도 연출을</h3>
-        <p>제목·자막·네온·타자기 같은 스타일을 한 번에 고릅니다. 외곽선·그림자·배경 박스, 숫자 카운트 애니메이션. 화면에서 더블클릭하면 그 자리에서 고칩니다.</p>
-        <figure><img loading="lazy" src="/assets/shots/text.webp" srcset="/assets/shots/text-sm.webp 800w, /assets/shots/text.webp 1600w" sizes="(max-width: 900px) 100vw, 940px" alt="텍스트 속성" width="1600" height="980"></figure>
-      </div>
-    </article>
-
-    <article class="scene">
-      <div class="scene-tc mono"><span>SCENE 08</span><span>00:00:26:02</span></div>
-      <div class="scene-body">
-        <h3>앞뒤 프레임을 겹쳐 보기</h3>
-        <p>양파 스킨으로 앞뒤 프레임을 겹쳐 보면서 움직임을 다듬습니다. 일시정지 중에만 그려서 재생은 느려지지 않습니다.</p>
-        <figure><img loading="lazy" src="/assets/shots/onion.webp" srcset="/assets/shots/onion-sm.webp 800w, /assets/shots/onion.webp 1600w" sizes="(max-width: 900px) 100vw, 940px" alt="양파 스킨" width="1600" height="980"></figure>
-      </div>
-    </article>
-
-    <article class="scene">
-      <div class="scene-tc mono"><span>SCENE 09</span><span>00:00:29:19</span></div>
-      <div class="scene-body">
-        <h3>값끼리 연결하기</h3>
-        <p>숫자 칸에 수식을 넣고 다른 레이어의 값을 참조합니다. 한 값을 바꾸면 연결된 속성이 모두 따라옵니다.</p>
-        <figure><img loading="lazy" src="/assets/shots/variables.webp" srcset="/assets/shots/variables-sm.webp 800w, /assets/shots/variables.webp 1600w" sizes="(max-width: 900px) 100vw, 940px" alt="변수 패널" width="1600" height="980"></figure>
-      </div>
-    </article>
-
-    <article class="scene">
-      <div class="scene-tc mono"><span>SCENE 10</span><span>00:00:33:08</span></div>
-      <div class="scene-body">
-        <h3>빠르게 내보내기</h3>
-        <p>유튜브·쇼츠·인스타·ProRes·GIF 프리셋. 하드웨어 H.264가 기본이고, HEVC·NVENC·AMF·QSV·VP9도 고를 수 있습니다.</p>
-        <figure class="is-dialog"><img loading="lazy" src="/assets/shots/export.webp" alt="내보내기 창" width="880" height="440"></figure>
-      </div>
+    <article class="card reveal">
+      <h3>하드웨어 가속으로<br>빠르게 내보내기</h3>
+      <img loading="lazy" src="/assets/shots/export.webp" alt="내보내기" width="880" height="440">
     </article>
   </section>
 
-  <section class="end">
-    <h2>첫 컷을<br>잘라 보세요.</h2>
-    <div class="get">
-      <a class="btn" data-download="latest" href="/download"><span>Windows용 받기</span><i class="fa-solid fa-arrow-down"></i></a>
-      <p class="get-meta mono"><span data-download-meta>Windows 10 · 11 (64비트)</span> &nbsp;·&nbsp; <a href="/download">이전 버전</a></p>
-    </div>
+  <section class="plain reveal">
+    <h2>계정도 클라우드도 없이<br>내 PC에서만</h2>
+  </section>
+
+  <section class="end reveal">
+    <img src="/assets/logo.svg" alt="" width="88" height="88">
+    <h2>첫 영상을<br>ODIT로 만들어 보세요</h2>
+    <a class="btn" data-download="latest" href="/download">ODIT 받기</a>
   </section>
 
 </main>
 
-<footer class="foot mono">
-  <span>ODIT © 2026</span>
-  <a href="/download">다운로드</a>
+<footer class="foot">
+  <span>© 2026 ODIT</span>
   <a href="https://github.com/a2den1/odit-web" rel="noopener">GitHub</a>
 </footer>
 
