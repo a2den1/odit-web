@@ -22,14 +22,14 @@ function send(res, status, body, headers = {}) {
   res.end(JSON.stringify(body))
 }
 
-async function readBody(req) {
+async function readBody(req, max = 64 * 1024) {
   if (req.body && typeof req.body === 'object') return req.body
   if (typeof req.body === 'string') { try { return JSON.parse(req.body) } catch { return {} } }
   const chunks = []
   let size = 0
   for await (const c of req) {
     size += c.length
-    if (size > 64 * 1024) break
+    if (size > max) break
     chunks.push(c)
   }
   try { return JSON.parse(Buffer.concat(chunks).toString('utf8') || '{}') } catch { return {} }
@@ -91,6 +91,48 @@ function readTicket(ticket) {
 
 const clientIp = (req) => String(req.headers['x-forwarded-for'] || '').split(',')[0].trim() || req.socket?.remoteAddress || ''
 
+/* ------------------------------------------------------------- discord */
+// Survey answers and bug reports arrive as DMs from the bot.
+const DISCORD = 'https://discord.com/api/v10'
+
+async function discord(path, init = {}) {
+  const headers = { Authorization: 'Bot ' + process.env.DISCORD_BOT_TOKEN, ...(init.headers || {}) }
+  if (!(init.body instanceof FormData)) headers['Content-Type'] = 'application/json'
+  const r = await fetch(DISCORD + path, { ...init, headers })
+  const j = await r.json().catch(() => ({}))
+  if (!r.ok) throw new Error(`discord ${r.status} ${j.message || ''}`)
+  return j
+}
+
+let recipient = process.env.DISCORD_USER_ID || null
+
+/** Who gets the DM: DISCORD_USER_ID, or else the bot application's owner. */
+async function recipientId() {
+  if (recipient) return recipient
+  const app = await discord('/oauth2/applications/@me')
+  recipient = app.team?.owner_user_id || app.owner?.id || null
+  return recipient
+}
+
+/** Send one message (embeds, optional files as { name, type, buf }) to the owner's DMs. */
+async function sendDM(message, files = []) {
+  const to = await recipientId()
+  if (!to) throw new Error('no recipient')
+  const dm = await discord('/users/@me/channels', { method: 'POST', body: JSON.stringify({ recipient_id: to }) })
+  const payload = { allowed_mentions: { parse: [] }, ...message }
+  if (!files.length) {
+    return discord(`/channels/${dm.id}/messages`, { method: 'POST', body: JSON.stringify(payload) })
+  }
+  const form = new FormData()
+  payload.attachments = files.map((f, i) => ({ id: i, filename: f.name }))
+  form.append('payload_json', JSON.stringify(payload))
+  files.forEach((f, i) => form.append(`files[${i}]`, new Blob([f.buf], { type: f.type || 'application/octet-stream' }), f.name))
+  return discord(`/channels/${dm.id}/messages`, { method: 'POST', body: form })
+}
+
+const clean = (v, max) => String(v ?? '').replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f]/g, '').trim().slice(0, max)
+
 module.exports = {
   SITEKEY, send, readBody, getReleases, publicReleases, verifyCaptcha, makeTicket, readTicket, clientIp,
+  sendDM, clean,
 }

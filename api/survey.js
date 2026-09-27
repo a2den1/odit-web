@@ -1,33 +1,6 @@
-const { send, readBody, readTicket } = require('./_lib')
+const { send, readBody, readTicket, sendDM, clean } = require('./_lib')
 
-const API = 'https://discord.com/api/v10'
 const used = new Set()   // tickets already spent on this instance
-
-const clean = (v, max) => String(v ?? '').replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f]/g, '').trim().slice(0, max)
-
-async function discord(path, init = {}) {
-  const r = await fetch(API + path, {
-    ...init,
-    headers: {
-      Authorization: 'Bot ' + process.env.DISCORD_BOT_TOKEN,
-      'Content-Type': 'application/json',
-      ...(init.headers || {}),
-    },
-  })
-  const j = await r.json().catch(() => ({}))
-  if (!r.ok) throw new Error(`discord ${r.status} ${j.message || ''}`)
-  return j
-}
-
-let recipient = process.env.DISCORD_USER_ID || null
-
-/** Who gets the DM: DISCORD_USER_ID, or else the bot application's owner. */
-async function recipientId() {
-  if (recipient) return recipient
-  const app = await discord('/oauth2/applications/@me')
-  recipient = app.team?.owner_user_id || app.owner?.id || null
-  return recipient
-}
 
 // POST { ticket, found, editor, sns, feedback, website(honeypot) }
 module.exports = async (req, res) => {
@@ -55,22 +28,15 @@ module.exports = async (req, res) => {
   ].filter(Boolean)
 
   try {
-    const to = await recipientId()
-    if (!to) throw new Error('no recipient')
-    const dm = await discord('/users/@me/channels', { method: 'POST', body: JSON.stringify({ recipient_id: to }) })
-    await discord(`/channels/${dm.id}/messages`, {
-      method: 'POST',
-      body: JSON.stringify({
-        allowed_mentions: { parse: [] },
-        embeds: [{
-          title: 'ODIT 설문 응답',
-          description: feedback || '*(피드백 없음)*',
-          color: 0xccff1f,
-          fields,
-          footer: { text: clean(ticket.f, 80) },
-          timestamp: new Date().toISOString(),
-        }],
-      }),
+    await sendDM({
+      embeds: [{
+        title: 'ODIT 설문 응답',
+        description: feedback || '*(피드백 없음)*',
+        color: 0xccff1f,
+        fields,
+        footer: { text: clean(ticket.f, 80) },
+        timestamp: new Date().toISOString(),
+      }],
     })
     used.add(b.ticket)
     send(res, 200, { ok: true })

@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ODIT 버그 제보</title>
+  <meta name="theme-color" content="#131316">
+  <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icon.png">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link rel="stylesheet" href="/styles.css">
+  <script>document.documentElement.classList.add('js')</script>
+  <script src="/report.js" defer></script>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <a class="mark" href="/" aria-label="ODIT 처음으로"><img src="/assets/mark.png" alt="" width="39" height="24"></a>
+    <nav class="tabs">
+      <a href="/#features">기능</a>
+      <a href="/help">도움말</a>
+      <a href="/report" aria-current="page">버그 제보</a>
+      <a href="/download">다운로드</a>
+    </nav>
+  </div>
+</header>
+
+<main class="report">
+  <h1>버그 제보</h1>
+
+  <form class="report-form" id="form" novalidate>
+    <label class="field">
+      <span>어떤 문제인가요?</span>
+      <textarea name="what" rows="5" maxlength="3500" placeholder="무엇을 하다가 어떻게 됐는지 적어 주세요" required></textarea>
+    </label>
+
+    <label class="field">
+      <span>어떻게 하면 다시 생기나요?</span>
+      <textarea name="steps" rows="3" maxlength="1000" placeholder="1. 영상을 가져온다&#10;2. …"></textarea>
+    </label>
+
+    <div class="field">
+      <span>ODIT 버전</span>
+      <div class="chips" id="versions"><button type="button" class="chip" aria-pressed="false">모름</button></div>
+    </div>
+
+    <div class="field">
+      <span>첨부 파일</span>
+      <label class="drop" id="drop">
+        <input type="file" id="file" multiple hidden>
+        <i class="fa-solid fa-paperclip"></i>
+        <b>파일을 끌어다 놓거나 눌러서 고르기</b>
+        <small>스크린샷, 녹화 영상, 프로젝트 파일 · 모두 합쳐 3 MB</small>
+      </label>
+      <ul class="files" id="files"></ul>
+    </div>
+
+    <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+    <div class="captcha-slot" id="captcha"><i class="fa-solid fa-spinner fa-spin"></i></div>
+    <p class="modal-err" id="err" hidden></p>
+    <button class="btn report-send" type="submit" id="send"><span>보내기</span></button>
+  </form>
+
+  <div class="report-done" id="done" hidden>
+    <i class="fa-solid fa-circle-check"></i>
+    <h2>제보를 보냈어요</h2>
+    <button class="btn btn-quiet" type="button" id="again">하나 더 보내기</button>
+  </div>
+</main>
+
+<footer class="foot">
+  <span>© 2026 ODIT</span>
+  <a href="https://github.com/a2den1/odit-web" rel="noopener">GitHub</a>
+</footer>
+
+</body>
+</html>
