@@ -18,6 +18,7 @@ function split(el) {
     const line = document.createElement('span')
     line.className = 'line'
     line.style.setProperty('--l', li)
+    line.dataset.t = text
     const len = [...text.replace(/\s/g, '')].length || 1
     let x = 0
     text.split(/\s+/).forEach((word, wi) => {
