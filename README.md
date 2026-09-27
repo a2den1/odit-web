@@ -15,12 +15,12 @@ Vercel에서 이 저장소를 가져오면 Framework Preset **Other**, Build/Out
 
 | 이름 | 용도 |
 |---|---|
-| `HCAPTCHA_SITEKEY` | hCaptcha 사이트 키 (dashboard.hcaptcha.com) |
-| `HCAPTCHA_SECRET` | hCaptcha 시크릿 |
+| `HCAPTCHA_SECRET` | hCaptcha 시크릿 (`ES_`로 시작). 넣으면 ODIT 사이트 키로 진짜 캡차가 켜집니다 |
 | `DISCORD_BOT_TOKEN` | 설문 응답을 DM으로 보낼 봇의 **토큰** (Developer Portal → Bot → Reset Token) |
 | `DISCORD_USER_ID` | 응답을 받을 사람의 디스코드 사용자 ID. 비우면 봇 애플리케이션 소유자에게 보냅니다 |
 
-hCaptcha 키가 없으면 hCaptcha 공식 테스트 키로 동작합니다(누구나 통과). 실제 운영 전에 꼭 넣으세요.
+사이트 키(`6a406cae-…`)는 코드에 들어 있습니다. `HCAPTCHA_SECRET`이 없으면 hCaptcha 공식 테스트 키로 동작합니다(누구나 통과).
+hCaptcha 대시보드의 사이트 설정에 배포 도메인(예: `xxx.vercel.app`)을 추가해야 캡차가 뜹니다.
 
 봇이 DM을 보내려면 받는 사람과 **같은 서버에 봇이 들어가 있어야** 합니다:
 `https://discord.com/oauth2/authorize?client_id=1552449660378021978&scope=bot&permissions=0`

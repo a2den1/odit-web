@@ -5,8 +5,12 @@ const crypto = require('crypto')
 // hCaptcha's published test pair: always passes. Used until real keys are set.
 const TEST_SITEKEY = '10000000-ffff-ffff-ffff-000000000001'
 const TEST_SECRET = '0x0000000000000000000000000000000000000000'
-const SITEKEY = process.env.HCAPTCHA_SITEKEY || TEST_SITEKEY
+// ODIT's own site key (public by design). The secret lives only in the
+// HCAPTCHA_SECRET environment variable; until it is set, the test pair keeps
+// downloads working.
+const ODIT_SITEKEY = '6a406cae-af0e-4716-b33a-037062ec0eca'
 const CAPTCHA_SECRET = process.env.HCAPTCHA_SECRET || TEST_SECRET
+const SITEKEY = process.env.HCAPTCHA_SITEKEY || (process.env.HCAPTCHA_SECRET ? ODIT_SITEKEY : TEST_SITEKEY)
 
 const TICKET_SECRET = process.env.TICKET_SECRET || process.env.HCAPTCHA_SECRET || process.env.DISCORD_BOT_TOKEN || 'odit-local-dev'
 const TICKET_TTL = 2 * 60 * 60 * 1000
