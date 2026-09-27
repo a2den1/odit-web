@@ -186,3 +186,96 @@ html.modal-open { overflow: hidden; }
   .rel-row { padding: 20px; }
   .modal { padding: 28px 20px 20px; border-radius: 24px; }
 }
+
+/* ── headline entrances (one per section) ────────── */
+.btn i.fa-windows { font-size: 1.05em; }
+[data-anim] .line { display: block; }
+[data-anim] .w { display: inline-block; white-space: nowrap; }
+[data-anim] .ch { display: inline-block; white-space: pre; }
+.js [data-anim]:not(.in):not([data-anim="color"]):not([data-anim="calc"]) { visibility: hidden; }
+.still .ch { animation: none !important; }
+
+/* playhead sweeps across, letters appear as it passes */
+[data-anim="play"] { position: relative; }
+[data-anim="play"].in .ch { animation: fadeIn .25s ease both; animation-delay: calc(var(--x) * 1s + .15s); }
+.playbar {
+  position: absolute; top: -6%; bottom: -6%; left: 0; width: 3px; border-radius: 2px;
+  background: var(--accent); animation: sweep 1.25s cubic-bezier(.45, .05, .55, .95) both;
+}
+@keyframes sweep { 0% { left: 0; opacity: 1 } 88% { left: 100%; opacity: 1 } 100% { left: 100%; opacity: 0 } }
+@keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
+
+/* dragged in, snapped to place */
+[data-anim="drag"].in .w { animation: drag .7s cubic-bezier(.2, 1.4, .4, 1) both; animation-delay: calc(var(--w) * 90ms); }
+@keyframes drag { 0% { transform: translateX(-90px); opacity: 0 } 60% { opacity: 1 } 100% { transform: none; opacity: 1 } }
+
+/* letters travel along an eased curve */
+[data-anim="curve"].in .ch { animation: curve .9s cubic-bezier(.34, 1.56, .64, 1) both; animation-delay: calc(var(--i) * 45ms); }
+@keyframes curve {
+  0% { transform: translate(-26px, 46px) rotate(-8deg); opacity: 0 }
+  55% { transform: translate(-6px, -8px) rotate(2deg); opacity: 1 }
+  100% { transform: none; opacity: 1 }
+}
+
+/* squashed and stretched into shape, like clay */
+[data-anim="mold"].in .ch { transform-origin: 50% 90%; animation: mold .9s ease both; animation-delay: calc(var(--i) * 55ms); }
+@keyframes mold {
+  0% { transform: scale(1.9, 0.08); opacity: 0 }
+  35% { transform: scale(0.75, 1.3); opacity: 1 }
+  60% { transform: scale(1.12, 0.9) }
+  80% { transform: scale(0.96, 1.04) }
+  100% { transform: none; opacity: 1 }
+}
+
+/* grey text takes on colour, in a wave */
+[data-anim="color"] .ch { color: #3d3d45; }
+[data-anim="color"].in .ch { animation: tint 1s ease both; animation-delay: calc(var(--i) * 70ms); }
+@keyframes tint { 0% { color: #3d3d45 } 45% { color: var(--accent) } 100% { color: var(--t1) } }
+
+/* equaliser bars */
+[data-anim="eq"].in .ch { transform-origin: 50% 100%; animation: eq .8s ease-out both; animation-delay: calc(var(--r) * 350ms); }
+@keyframes eq {
+  0% { transform: scaleY(0); opacity: 0 }
+  25% { transform: scaleY(1.6); opacity: 1 }
+  45% { transform: scaleY(0.55) }
+  65% { transform: scaleY(1.25) }
+  82% { transform: scaleY(0.9) }
+  100% { transform: none; opacity: 1 }
+}
+
+/* opened through a round mask */
+[data-anim="mask"].in { animation: iris 1.1s cubic-bezier(.65, 0, .35, 1) both; }
+@keyframes iris { from { clip-path: circle(0% at 22% 50%) } to { clip-path: circle(140% at 22% 50%) } }
+
+/* typed, with the caret riding along */
+[data-anim="type"].in .ch { animation: type .12s steps(1) both; animation-delay: calc(var(--i) * 85ms); }
+@keyframes type {
+  0% { opacity: 0 }
+  1% { opacity: 1; box-shadow: 3px 0 0 var(--accent) }
+  100% { opacity: 1; box-shadow: none }
+}
+
+/* onion ghosts before (red) and after (blue) close in */
+[data-anim="ghost"].in { animation: ghost 1.2s cubic-bezier(.2, .8, .2, 1) both; }
+@keyframes ghost {
+  0% { opacity: 0; text-shadow: -34px 0 rgba(255, 90, 90, .55), -17px 0 rgba(255, 90, 90, .35), 17px 0 rgba(90, 150, 255, .35), 34px 0 rgba(90, 150, 255, .55) }
+  30% { opacity: 1 }
+  100% { opacity: 1; text-shadow: 0 0 rgba(255, 90, 90, 0), 0 0 rgba(255, 90, 90, 0), 0 0 rgba(90, 150, 255, 0), 0 0 rgba(90, 150, 255, 0) }
+}
+
+/* numbers churn, then settle (driven from main.js) */
+[data-anim="calc"] .ch.churn { color: var(--accent); font-variant-numeric: tabular-nums; }
+
+/* fast zoom in from the right, with motion blur */
+[data-anim="zoom"].in .w { animation: zoom .5s cubic-bezier(.1, .9, .2, 1) both; animation-delay: calc(var(--w) * 60ms); }
+@keyframes zoom { from { transform: translateX(140px) skewX(-14deg); filter: blur(10px); opacity: 0 } to { transform: none; filter: none; opacity: 1 } }
+
+/* falls into place, as if downloading onto the PC */
+[data-anim="drop"].in .ch { animation: drop .7s cubic-bezier(.3, 1.45, .6, 1) both; animation-delay: calc(var(--i) * 40ms); }
+@keyframes drop { from { transform: translateY(-70px); opacity: 0 } to { transform: none; opacity: 1 } }
+
+/* clapperboard: the top line swings shut, the second rises */
+[data-anim="clap"].in .line:first-child { transform-origin: 0% 100%; animation: clap .75s cubic-bezier(.5, 0, .6, 1.6) both; }
+[data-anim="clap"].in .line:last-child { animation: rise .6s cubic-bezier(.2, .8, .2, 1) .55s both; }
+@keyframes clap { 0% { transform: rotate(-16deg); opacity: 0 } 25% { opacity: 1 } 100% { transform: none; opacity: 1 } }
+@keyframes rise { from { transform: translateY(24px); opacity: 0 } to { transform: none; opacity: 1 } }
