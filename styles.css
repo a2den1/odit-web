@@ -205,24 +205,13 @@ html.modal-open { overflow: hidden; }
 @keyframes sweep { 0% { left: 0; opacity: 1 } 88% { left: 100%; opacity: 1 } 100% { left: 100%; opacity: 0 } }
 @keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
 
-/* hero: a cut line is drawn, then the top and bottom halves splice together on it */
-[data-anim="splice"] .line {
-  position: relative; color: transparent;
-  background: linear-gradient(var(--accent), var(--accent)) center / 0% 2px no-repeat;
+/* hero: a rack focus — blurred and loose, pulled sharp */
+[data-anim="focus"].in .line { animation: focus 1.3s cubic-bezier(.2, .8, .2, 1) both; animation-delay: calc(var(--l) * 0.28s + 0.1s); }
+@keyframes focus {
+  0% { filter: blur(18px); letter-spacing: 0.14em; opacity: 0; transform: scale(1.05) }
+  35% { opacity: 1 }
+  100% { filter: blur(0); letter-spacing: -0.03em; opacity: 1; transform: none }
 }
-[data-anim="splice"] .line::before, [data-anim="splice"] .line::after {
-  content: attr(data-t); position: absolute; inset: 0; color: var(--t1);
-}
-[data-anim="splice"] .line::before { clip-path: inset(0 0 50% 0); }
-[data-anim="splice"] .line::after { clip-path: inset(50% 0 0 0); }
-[data-anim="splice"].in .line { animation: cut 1.1s ease both; animation-delay: calc(var(--l) * 0.2s); }
-[data-anim="splice"].in .line::before { animation: halfTop .8s cubic-bezier(.2, .9, .2, 1) both; animation-delay: calc(var(--l) * 0.2s + 0.35s); }
-[data-anim="splice"].in .line::after { animation: halfBot .8s cubic-bezier(.2, .9, .2, 1) both; animation-delay: calc(var(--l) * 0.2s + 0.35s); }
-@keyframes cut { 0% { background-size: 0% 2px } 35% { background-size: 100% 2px } 70% { background-size: 100% 2px; background-image: linear-gradient(var(--accent), var(--accent)) } 100% { background-size: 100% 0px } }
-@keyframes halfTop { from { transform: translateX(-70px); opacity: 0 } to { transform: none; opacity: 1 } }
-@keyframes halfBot { from { transform: translateX(70px); opacity: 0 } to { transform: none; opacity: 1 } }
-.still[data-anim="splice"] .line { color: var(--t1); background: none; }
-.still[data-anim="splice"] .line::before, .still[data-anim="splice"] .line::after { content: none; }
 
 /* dragged in, snapped to place */
 [data-anim="drag"].in .w { animation: drag .7s cubic-bezier(.2, 1.4, .4, 1) both; animation-delay: calc(var(--w) * 90ms); }
