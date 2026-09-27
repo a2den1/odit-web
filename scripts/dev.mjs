@@ -45,6 +45,7 @@ http.createServer(async (req, res) => {
   let file = path.join(root, p)
   if (!file.startsWith(root)) { res.statusCode = 403; return res.end() }
   if (!path.extname(file) && fs.existsSync(file + '.html')) file += '.html'
+  else if (!path.extname(file) && fs.existsSync(path.join(file, 'index.html'))) file = path.join(file, 'index.html')
   fs.readFile(file, (err, buf) => {
     if (err) { res.statusCode = 404; return res.end('not found') }
     res.setHeader('Content-Type', TYPES[path.extname(file)] || 'application/octet-stream')

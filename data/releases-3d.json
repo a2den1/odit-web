@@ -1,0 +1,15 @@
+[
+  {
+    "version": "0.1.0",
+    "date": "2026-09-27",
+    "notes": "## 첫 공개 버전\n- 기본 도형 12종과 3D 글자, 조명 3종, 카메라\n- GLB · GLTF · FBX · OBJ · STL 모델 불러오기\n- 정점 편집 모드: 선택, 이동·회전·크기, 돌출, 병합, 세분화\n- 재질 프리셋 16종, 모션 프리셋 12종\n- 모든 값에 키프레임, 움직임 곡선 41종, 자동 키\n- 타임라인: 카메라 샷(컷·암전·카메라 이동), 자막 7가지, 효과 12종, 오디오\n- MP4 · WebM · GIF · PNG 내보내기",
+    "assets": [
+      {
+        "id": "odit3d-0.1.0-win",
+        "name": "ODIT-3D-0.1.0-setup.exe",
+        "size": 111064327,
+        "url": "https://github.com/a2den1/odit-web/releases/download/3d-v0.1.0/ODIT-3D-0.1.0-setup.exe"
+      }
+    ]
+  }
+]

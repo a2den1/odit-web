@@ -36,11 +36,16 @@ async function readBody(req, max = 64 * 1024) {
 }
 
 /* ------------------------------------------------------------ releases */
-// The list is maintained by hand in data/releases.json — newest first.
-const RELEASES = require('../data/releases.json')
+// Each product's list is maintained by hand, newest first.
+const PRODUCTS = {
+  odit: { name: 'ODIT', releases: require('../data/releases.json') },
+  '3d': { name: 'ODIT 3D', releases: require('../data/releases-3d.json') },
+}
+const productOf = (p) => (PRODUCTS[p] ? p : 'odit')
 
-async function getReleases() {
-  return RELEASES.map((r) => ({ prerelease: false, notes: '', ...r, name: 'ODIT ' + r.version }))
+async function getReleases(product = 'odit') {
+  const P = PRODUCTS[productOf(product)]
+  return P.releases.map((r) => ({ prerelease: false, notes: '', ...r, name: P.name + ' ' + r.version }))
 }
 
 /** Public view of the releases — download URLs stay on the server. */
@@ -133,6 +138,6 @@ async function sendDM(message, files = []) {
 const clean = (v, max) => String(v ?? '').replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f]/g, '').trim().slice(0, max)
 
 module.exports = {
-  SITEKEY, send, readBody, getReleases, publicReleases, verifyCaptcha, makeTicket, readTicket, clientIp,
+  SITEKEY, PRODUCTS, productOf, send, readBody, getReleases, publicReleases, verifyCaptcha, makeTicket, readTicket, clientIp,
   sendDM, clean,
 }

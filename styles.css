@@ -36,7 +36,6 @@ h1, h2, h3, p, figure { margin: 0; }
 .top-inner { max-width: var(--max); margin: 0 auto; height: 60px; padding: 0 var(--gutter); display: flex; align-items: center; justify-content: space-between; }
 .mark { display: flex; align-items: center; gap: 14px; }
 .mark img { height: 20px; width: auto; }
-.mark .mark-tg { height: 26px; }
 .tabs { display: flex; gap: 4px; }
 .tabs a {
   padding: 8px 14px; border-radius: 10px; font-size: 15px; font-weight: 600; color: var(--t2);
@@ -459,7 +458,55 @@ html.modal-open { overflow: hidden; }
 @media (max-width: 420px) {
   .mark { gap: 10px; }
   .mark img { height: 17px; }
-  .mark .mark-tg { height: 22px; }
   .tabs { gap: 0; }
   .tabs a { padding: 8px 8px; font-size: 13.5px; }
 }
+
+/* ── footer brand · product switch ─────────────────── */
+.foot { align-items: center; gap: 24px; }
+.foot span { margin-right: auto; }
+.foot-tg { height: 28px; width: auto; flex: none; }
+.docs-foot { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 18px; margin-top: 32px; padding: 0 12px; font-size: 13px; color: var(--t3); }
+.docs-foot a:hover { color: var(--t1); }
+.docs-foot .foot-tg { height: 24px; margin-left: auto; }
+.mark-3d { font-size: 13px; font-weight: 800; letter-spacing: 0.02em; color: var(--on-accent); background: var(--accent); padding: 2px 7px; border-radius: 6px; line-height: 1.4; }
+@media (max-width: 560px) {
+  .foot { flex-wrap: wrap; gap: 14px 20px; }
+  .foot-tg { height: 24px; }
+}
+
+/* ── ODIT 3D: list cards and 3D-flavoured headline entrances ── */
+.card-list { padding-bottom: 36px; justify-content: flex-start; }
+.pills { list-style: none; margin: 28px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.pills li { padding: 8px 14px; border-radius: 12px; background: var(--s2); color: var(--t2); font-size: 15px; font-weight: 600; }
+.big-pills li { padding: 14px 22px; font-size: 20px; font-weight: 800; color: var(--t1); letter-spacing: 0.02em; }
+
+/* letters flip up on their X axis, like cards turning in space */
+[data-anim="flip"] { perspective: 700px; }
+[data-anim="flip"].in .ch { transform-origin: 50% 100%; animation: flip .9s cubic-bezier(.2, .9, .25, 1.15) both; animation-delay: calc(var(--i) * 45ms); }
+@keyframes flip { from { transform: rotateX(-100deg); opacity: 0 } 40% { opacity: 1 } to { transform: none; opacity: 1 } }
+
+/* pushed out of the screen toward you, like an extrude */
+[data-anim="extrude"] { perspective: 500px; }
+[data-anim="extrude"].in .w { animation: extrude .8s cubic-bezier(.2, .8, .2, 1) both; animation-delay: calc(var(--w) * 90ms); }
+@keyframes extrude { from { transform: translateZ(-420px); opacity: 0; filter: blur(4px) } to { transform: none; opacity: 1; filter: none } }
+
+/* swings round on Y, as a camera orbits the subject */
+[data-anim="orbit"] { perspective: 900px; }
+[data-anim="orbit"].in .line { transform-origin: 50% 50% -240px; animation: orbit 1.1s cubic-bezier(.2, .8, .2, 1) both; animation-delay: calc(var(--l) * 0.15s); }
+@keyframes orbit { from { transform: rotateY(-70deg); opacity: 0 } 45% { opacity: 1 } to { transform: none; opacity: 1 } }
+
+/* a metallic highlight runs across the words */
+[data-anim="shine"] .line {
+  background: linear-gradient(100deg, var(--t1) 0%, var(--t1) 40%, #fff6c8 48%, var(--accent) 50%, #fff6c8 52%, var(--t1) 60%, var(--t1) 100%) 0 0 / 300% 100%;
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+[data-anim="shine"].in .line { animation: shine 1.8s ease both, fadeIn .5s ease both; animation-delay: calc(var(--l) * 0.2s); }
+@keyframes shine { from { background-position: 100% 0 } to { background-position: 0 0 } }
+
+/* bounces in, like the 통통 motion */
+[data-anim="bounce"].in .ch { animation: bounce .8s cubic-bezier(.3, 1.6, .5, 1) both; animation-delay: calc(var(--i) * 40ms); }
+@keyframes bounce { 0% { transform: translateY(-40px) scale(.7); opacity: 0 } 50% { transform: translateY(6px) scale(1.05, .92); opacity: 1 } 100% { transform: none; opacity: 1 } }
+
+/* keep the older playhead headline working for cards */
+[data-anim="play"] { display: inline-block; }

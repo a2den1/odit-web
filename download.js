@@ -12,9 +12,13 @@
   const day = (iso) => { try { return new Date(iso).toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' }) } catch { return '' } }
   const installerOf = (r) => r.assets.find((a) => /setup.*\.exe$/i.test(a.name)) || r.assets.find((a) => /\.exe$/i.test(a.name))
 
+  // /3d/… pages are ODIT 3D; everything else is ODIT
+  const PRODUCT = location.pathname.startsWith('/3d') ? '3d' : 'odit'
+  const NAME = PRODUCT === '3d' ? 'ODIT 3D' : 'ODIT'
+  const ICON = PRODUCT === '3d' ? '/assets/logo-3d.svg' : '/assets/logo.svg'
   const state = { sitekey: '', releases: [], latest: null }
 
-  const ready = fetch('/api/releases')
+  const ready = fetch('/api/releases?p=' + PRODUCT)
     .then((r) => r.json())
     .then((j) => {
       state.sitekey = j.sitekey || ''
@@ -85,9 +89,9 @@
     root.innerHTML = `
       <article class="rel-hero">
         <div class="rel-hero-head">
-          <img src="/assets/logo.svg" alt="" width="64" height="64">
+          <img src="${ICON}" alt="" width="64" height="64">
           <div>
-            <h2>ODIT ${esc(L.version)}${L.prerelease ? ' <span class="tag">미리보기</span>' : ''}</h2>
+            <h2>${NAME} ${esc(L.version)}${L.prerelease ? ' <span class="tag">미리보기</span>' : ''}</h2>
           </div>
         </div>
         <div class="rel-actions">${assetButtons(L, true)}</div>
@@ -149,7 +153,7 @@
 
   async function startDownload(assetId, label) {
     const body = openModal(`
-      <h2 class="modal-title">${label ? `ODIT ${esc(label)} 받기` : 'ODIT 받기'}</h2>
+      <h2 class="modal-title">${label ? `${NAME} ${esc(label)} 받기` : `${NAME} 받기`}</h2>
       <div class="captcha-slot"><i class="fa-solid fa-spinner fa-spin"></i></div>
       <p class="modal-err" hidden></p>`)
     const slot = $('.captcha-slot', body)
@@ -174,7 +178,7 @@
           const r = await fetch('/api/download', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ token, assetId }),
+            body: JSON.stringify({ token, assetId, product: PRODUCT }),
           })
           const j = await r.json()
           if (!r.ok) throw new Error(j.error || '다운로드에 실패했습니다')

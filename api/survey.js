@@ -1,4 +1,4 @@
-const { send, readBody, readTicket, sendDM, clean } = require('./_lib')
+const { send, readBody, readTicket, sendDM, clean, PRODUCTS, productOf } = require('./_lib')
 
 const used = new Set()   // tickets already spent on this instance
 
@@ -30,7 +30,7 @@ module.exports = async (req, res) => {
   try {
     await sendDM({
       embeds: [{
-        title: 'ODIT 설문 응답',
+        title: PRODUCTS[productOf(ticket.p)].name + ' 설문 응답',
         description: feedback || '*(피드백 없음)*',
         color: 0xccff1f,
         fields,

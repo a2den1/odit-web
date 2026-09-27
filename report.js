@@ -8,6 +8,7 @@
   const form = $('#form'), err = $('#err'), sendBtn = $('#send')
   const drop = $('#drop'), input = $('#file'), list = $('#files')
   const MAX_FILES = 6, MAX_TOTAL = 3 * 1024 * 1024
+  const PRODUCT = location.pathname.startsWith('/3d') ? '3d' : 'odit'
   const files = []          // { name, type, blob, url }
   let token = '', widget = null
 
@@ -19,7 +20,7 @@
   const chips = $('#versions')
   const pick = (c) => { for (const x of chips.children) x.setAttribute('aria-pressed', String(x === c)) }
   chips.addEventListener('click', (e) => { const c = e.target.closest('.chip'); if (c) pick(c) })
-  const ready = fetch('/api/releases').then((r) => r.json()).catch(() => ({}))
+  const ready = fetch('/api/releases?p=' + PRODUCT).then((r) => r.json()).catch(() => ({}))
   ready.then((j) => {
     const vs = (j.releases || []).map((r) => r.version)
     chips.insertAdjacentHTML('afterbegin', vs.map((v) => `<button type="button" class="chip" aria-pressed="false">${v}</button>`).join(''))
@@ -112,6 +113,7 @@
     try {
       const body = {
         token,
+        product: PRODUCT,
         what: form.what.value,
         steps: form.steps.value,
         version: chips.querySelector('[aria-pressed="true"]')?.textContent || '',

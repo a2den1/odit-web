@@ -1,8 +1,9 @@
-const { SITEKEY, send, getReleases, publicReleases } = require('./_lib')
+const { SITEKEY, send, getReleases, publicReleases, productOf } = require('./_lib')
 
 module.exports = async (req, res) => {
   try {
-    const releases = publicReleases(await getReleases())
+    const product = productOf(new URL(req.url, 'http://x').searchParams.get('p'))
+    const releases = publicReleases(await getReleases(product))
     send(res, 200, { sitekey: SITEKEY, releases }, {
       'Cache-Control': 'public, s-maxage=300, stale-while-revalidate=600',
     })

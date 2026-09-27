@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ODIT 3D 도움말</title>
+  <meta name="description" content="ODIT 3D 설치, 모델링, 편집 모드, 애니메이션, 카메라 샷, 내보내기, 단축키 안내.">
+  <meta name="theme-color" content="#131316">
+  <link rel="icon" href="/assets/logo-3d.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icon-3d.png">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link rel="stylesheet" href="/styles.css">
+  <script>document.documentElement.classList.add('js')</script>
+  <script src="/help.js" defer></script>
+</head>
+<body class="docs-body">
+
+<header class="top">
+  <div class="top-inner">
+    <a class="mark" href="/3d" aria-label="ODIT 3D 처음으로"><img src="/assets/mark.png" alt="" width="39" height="24"><span class="mark-3d">3D</span></a>
+    <nav class="tabs">
+      <a href="/3d#features">기능</a>
+      <a href="/3d/help" aria-current="page">도움말</a>
+      <a href="/3d/report">버그 제보</a>
+      <a href="/3d/download">다운로드</a>
+    </nav>
+  </div>
+</header>
+
+<div class="docs">
+  <aside class="docs-side" id="side">
+    <label class="docs-search">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="search" id="q" placeholder="검색" autocomplete="off" aria-label="도움말 검색">
+      <kbd>Ctrl K</kbd>
+    </label>
+    <nav class="docs-nav" id="nav"></nav>
+    <div class="docs-foot">
+      <a href="/">ODIT</a>
+      <a href="/3d/credits">크레딧</a>
+      <img class="foot-tg" src="/assets/twelvegames.png" alt="TwelveGames" width="139" height="72">
+    </div>
+  </aside>
+  <button class="docs-menu" id="menu" type="button" aria-controls="side" aria-expanded="false"><i class="fa-solid fa-bars"></i><span>목차</span></button>
+
+  <main class="docs-main" id="main">
+
+<!-- ───────────────────────── 시작하기 ───────────────────────── -->
+<article data-page="intro" data-group="시작하기" data-title="ODIT 3D 소개" data-icon="fa-cube">
+  <h1>ODIT 3D 소개</h1>
+  <p class="lead">ODIT 3D는 3D 장면을 만들고, 카메라와 자막·효과·음악을 얹어 바로 영상으로 내보내는 Windows 앱이에요. 계정 없이 내 PC에서만 돌아가요.</p>
+  <h2 id="what">할 수 있는 것</h2>
+  <ul>
+    <li>기본 도형 12종과 한글 3D 글자로 장면 만들기, 3D 모델 불러오기</li>
+    <li>편집 모드에서 꼭짓점과 면을 직접 옮기고, 돌출하고, 합치기</li>
+    <li>재질 16종, 조명 3종, 모든 값에 키프레임과 모션 프리셋 12종</li>
+    <li>타임라인에서 카메라 샷을 이어 붙이고 자막·효과·음악 얹기</li>
+    <li>MP4 · WebM · GIF · PNG로 내보내기</li>
+  </ul>
+  <h2 id="requirements">필요한 환경</h2>
+  <table>
+    <tr><th>운영체제</th><td>Windows 10 · 11 (64비트)</td></tr>
+    <tr><th>그래픽</th><td>WebGL2를 지원하는 그래픽 카드</td></tr>
+    <tr><th>디스크</th><td>설치에 약 400 MB</td></tr>
+  </table>
+  <h2 id="files">불러올 수 있는 파일</h2>
+  <table>
+    <tr><th>3D 모델</th><td>GLB, GLTF, FBX, OBJ, STL</td></tr>
+    <tr><th>오디오</th><td>MP3, WAV, M4A, AAC, FLAC, OGG</td></tr>
+    <tr><th>이미지</th><td>PNG, JPG, WEBP (재질의 색 이미지로 사용)</td></tr>
+  </table>
+</article>
+
+<article data-page="install" data-group="시작하기" data-title="설치와 업데이트" data-icon="fa-download">
+  <h1>설치와 업데이트</h1>
+  <h2 id="download">설치 파일 받기</h2>
+  <ol>
+    <li><a href="/3d/download">다운로드</a> 페이지에서 <b>다운로드</b>를 눌러요.</li>
+    <li>"사람입니다" 확인을 마치면 <code>ODIT-3D-버전-setup.exe</code>가 받아져요.</li>
+    <li>받은 파일을 실행하고 설치할 폴더를 고른 뒤 <b>설치</b>를 눌러요.</li>
+  </ol>
+  <div class="hint warn"><i class="fa-solid fa-shield-halved"></i><div><p><b>"Windows의 PC 보호" 창이 뜨면</b></p><p><b>추가 정보</b> → <b>실행</b>을 누르면 설치가 이어져요. 새로 나온 프로그램이라 Windows가 아직 모르는 파일일 때 나오는 안내예요.</p></div></div>
+  <h2 id="update">업데이트</h2>
+  <p>새 버전이 나오면 <a href="/3d/download">다운로드</a> 페이지에서 받아 설치하면 돼요. 기존에 만든 프로젝트는 그대로 열려요. 지난 버전은 같은 페이지의 <b>이전 버전</b>에 있어요.</p>
+  <h2 id="uninstall">지우기</h2>
+  <p>Windows <b>설정</b> → <b>앱</b> → <b>설치된 앱</b>에서 ODIT 3D를 찾아 <b>제거</b>를 눌러요. 프로젝트 파일(<code>.odit3d</code>)과 내보낸 영상은 지워지지 않아요.</p>
+</article>
+
+<article data-page="interface" data-group="시작하기" data-title="화면 구성" data-icon="fa-table-columns">
+  <h1>화면 구성</h1>
+  <figure class="doc-shot"><img src="/assets/shots-3d/editor-sm.webp" alt="ODIT 3D 편집 화면" width="820" height="500" loading="lazy"></figure>
+  <h2 id="left">왼쪽: 라이브러리</h2>
+  <table>
+    <tr><th>추가</th><td>도형, 3D 글자, 조명, 카메라, 빈 오브젝트, 3D 모델 불러오기</td></tr>
+    <tr><th>재질</th><td>선택한 오브젝트에 재질 프리셋 입히기</td></tr>
+    <tr><th>모션</th><td>누르면 바로 움직임이 생기는 모션 프리셋</td></tr>
+    <tr><th>텍스트</th><td>화면 위에 얹는 자막 스타일</td></tr>
+    <tr><th>효과</th><td>영상 전체에 거는 화면 효과</td></tr>
+    <tr><th>오디오</th><td>배경 음악과 효과음</td></tr>
+  </table>
+  <h2 id="viewport">가운데: 뷰포트</h2>
+  <p>3D 장면을 보는 곳이에요. 오른쪽 위 버튼으로 <b>와이어 · 솔리드 · 렌더</b> 보기를 바꾸고, 아래 재생 바에서 재생과 <b>카메라 시점</b>을 켜고 끌 수 있어요.</p>
+  <table>
+    <tr><th>둘러보기</th><td>마우스 가운데 버튼을 끌거나, <kbd>Alt</kbd> + 왼쪽 버튼으로 끌기</td></tr>
+    <tr><th>옆으로 옮기기</th><td>오른쪽 버튼으로 끌기</td></tr>
+    <tr><th>확대 · 축소</th><td>마우스 휠</td></tr>
+    <tr><th>선택한 것에 맞추기</th><td><kbd>F</kbd></td></tr>
+  </table>
+  <h2 id="right">오른쪽: 장면 목록과 속성</h2>
+  <p>위쪽에는 장면에 있는 모든 것이 목록으로 나와요. 아래 <b>오브젝트</b> 탭에서 선택한 것의 위치·회전·크기·모양·재질을, <b>장면</b> 탭에서 화면 크기와 프레임레이트, 배경을 바꿔요.</p>
+  <h2 id="bottom">아래: 타임라인</h2>
+  <p>카메라 샷, 자막, 효과, 오디오 줄과 선택한 오브젝트의 키프레임이 시간 순서대로 보여요.</p>
+</article>
+
+<article data-page="first-scene" data-group="시작하기" data-title="첫 장면 만들기" data-icon="fa-flag-checkered">
+  <h1>첫 장면 만들기</h1>
+  <p class="lead">도형 하나를 놓고, 움직이고, 카메라로 찍어서 영상으로 내보내 볼게요.</p>
+  <h2 id="new">1. 새 프로젝트</h2>
+  <p>ODIT 3D를 켜고 홈 화면에서 <b>새 프로젝트</b>를 눌러요.</p>
+  <h2 id="add">2. 도형 놓기</h2>
+  <p>뷰포트 위에서 <kbd>Shift</kbd> + <kbd>A</kbd>를 누르거나 왼쪽 <b>추가</b> 탭에서 <b>정육면체</b>를 눌러요. 왼쪽 <b>재질</b> 탭에서 <b>금</b>을 골라 입혀 보세요.</p>
+  <h2 id="move">3. 움직이기</h2>
+  <p>오브젝트를 선택하고 왼쪽 <b>모션</b> 탭에서 <b>둥실</b>을 누르면 바로 움직여요. 직접 만들고 싶다면 <a href="#keyframes">키프레임</a>을 보세요.</p>
+  <h2 id="camera">4. 카메라로 찍기</h2>
+  <p><kbd>Numpad 0</kbd>으로 카메라 시점을 켜고 구도를 확인해요. 타임라인의 <b>샷 넣기</b>를 누르면 그 카메라가 영상의 한 장면이 돼요.</p>
+  <h2 id="export">5. 내보내기</h2>
+  <p><kbd>Ctrl</kbd> + <kbd>E</kbd>를 누르고 <b>MP4</b>를 골라 내보내요.</p>
+  <div class="hint"><i class="fa-solid fa-floppy-disk"></i><div><p>처음 한 번 <kbd>Ctrl</kbd> + <kbd>S</kbd>로 저장해 두면, 그다음부터는 1분마다 알아서 저장돼요.</p></div></div>
+</article>
+
+<!-- ───────────────────────── 모델링 ───────────────────────── -->
+<article data-page="objects" data-group="모델링" data-title="오브젝트 추가" data-icon="fa-shapes">
+  <h1>오브젝트 추가</h1>
+  <p class="lead"><kbd>Shift</kbd> + <kbd>A</kbd>를 누르면 마우스 위치에 추가 메뉴가 떠요. 왼쪽 <b>추가</b> 탭에서도 같은 걸 넣을 수 있어요.</p>
+  <h2 id="prims">기본 도형 12종</h2>
+  <p>정육면체, 구, 원기둥, 원뿔, 도넛, 평면, 캡슐, 다면체 구, 피라미드, 고리, 매듭, 3D 글자.</p>
+  <p>오른쪽 속성에서 도형마다 너비·높이·깊이, 반지름, 분할, 모서리 둥글기 같은 모양 값을 바꿀 수 있어요.</p>
+  <h2 id="text">3D 글자</h2>
+  <p>한글도 입체 글자로 만들 수 있어요. 속성에서 내용, 글자 크기, 두께를 바꿔요.</p>
+  <h2 id="others">그 밖에</h2>
+  <ul>
+    <li><b>조명</b>: 태양, 전구, 스포트</li>
+    <li><b>카메라</b>: 영상을 찍는 시점. 여러 대를 두고 샷마다 바꿔 쓸 수 있어요.</li>
+    <li><b>빈 오브젝트</b>: 보이지 않는 기준점. 여러 오브젝트를 함께 움직일 때 써요.</li>
+  </ul>
+  <h2 id="edit">복제와 삭제</h2>
+  <p><kbd>Shift</kbd> + <kbd>D</kbd>로 복제하면 바로 옮길 수 있는 상태가 돼요. <kbd>X</kbd>나 <kbd>Delete</kbd>로 지워요. <kbd>H</kbd>로 숨기고, <kbd>Alt</kbd> + <kbd>H</kbd>로 모두 다시 보여요.</p>
+</article>
+
+<article data-page="transform" data-group="모델링" data-title="이동 · 회전 · 크기" data-icon="fa-arrows-up-down-left-right">
+  <h1>이동 · 회전 · 크기</h1>
+  <h2 id="keys">키로 바로 바꾸기</h2>
+  <p>오브젝트를 선택하고 마우스를 뷰포트에 둔 채 누르면 바로 따라 움직여요.</p>
+  <table class="keys">
+    <tr><td><kbd>G</kbd></td><td>이동</td></tr>
+    <tr><td><kbd>R</kbd></td><td>회전</td></tr>
+    <tr><td><kbd>S</kbd></td><td>크기</td></tr>
+    <tr><td><kbd>X</kbd> <kbd>Y</kbd> <kbd>Z</kbd></td><td>누르는 중에 한 축으로 고정</td></tr>
+    <tr><td>클릭 · <kbd>Enter</kbd></td><td>확정</td></tr>
+    <tr><td>오른쪽 클릭 · <kbd>Esc</kbd></td><td>취소</td></tr>
+  </table>
+  <h2 id="gizmo">화살표로 바꾸기</h2>
+  <p>뷰포트 왼쪽의 도구 버튼으로 이동·회전·크기 화살표를 켜고, 화살표를 끌어서 바꿔요.</p>
+  <h2 id="numbers">숫자로 바꾸기</h2>
+  <p>오른쪽 <b>오브젝트</b> 탭의 위치·회전·크기 칸에 값을 직접 적어요.</p>
+</article>
+
+<article data-page="editmode" data-group="모델링" data-title="편집 모드" data-icon="fa-draw-polygon">
+  <h1>편집 모드</h1>
+  <p class="lead">도형의 꼭짓점과 면을 직접 만져서 모양을 바꿔요. 오브젝트를 선택하고 <kbd>Tab</kbd>을 누르면 들어가고, 다시 누르면 나와요.</p>
+  <figure class="doc-shot"><img src="/assets/shots-3d/edit-sm.webp" alt="편집 모드" width="820" height="500" loading="lazy"></figure>
+  <h2 id="select">선택</h2>
+  <ul>
+    <li><kbd>1</kbd> 꼭짓점 선택, <kbd>3</kbd> 면 선택</li>
+    <li>클릭으로 고르고, 빈 곳을 끌면 상자 안의 것이 모두 선택돼요.</li>
+    <li><kbd>A</kbd> 전체 선택, <kbd>Esc</kbd> 선택 해제</li>
+  </ul>
+  <h2 id="tools">바꾸기</h2>
+  <table class="keys">
+    <tr><td><kbd>G</kbd> <kbd>R</kbd> <kbd>S</kbd></td><td>선택한 부분 이동 · 회전 · 크기 (<kbd>X</kbd> <kbd>Y</kbd> <kbd>Z</kbd>로 축 고정)</td></tr>
+    <tr><td><kbd>E</kbd></td><td>돌출 — 선택한 면을 밀어서 새 모양을 뽑아내요</td></tr>
+    <tr><td><kbd>M</kbd></td><td>병합 — 선택한 꼭짓점을 한 점으로 합쳐요</td></tr>
+    <tr><td>세분화</td><td>면을 잘게 나눠서 더 섬세하게 만질 수 있게 해요</td></tr>
+    <tr><td><kbd>X</kbd></td><td>선택한 부분 삭제</td></tr>
+  </table>
+  <p>뷰포트 아래에 뜨는 도구 막대에서도 같은 기능을 누를 수 있어요.</p>
+</article>
+
+<article data-page="materials" data-group="모델링" data-title="재질" data-icon="fa-palette">
+  <h1>재질</h1>
+  <h2 id="presets">재질 프리셋 16종</h2>
+  <p>오브젝트를 선택하고 왼쪽 <b>재질</b> 탭에서 누르면 바로 입혀져요.</p>
+  <p>점토, 플라스틱, 유광, 크롬, 금, 구리, 브러시드, 유리, 고무, 네온, 용암, 젤리, 민트, 하늘, 와이어, 로우폴리.</p>
+  <h2 id="custom">직접 조절</h2>
+  <p>오른쪽 속성에서 색, 금속성, 거칠기, 발광색과 발광 세기, 불투명도를 바꿔요. 이미지 파일(PNG · JPG · WEBP)을 골라 색 대신 무늬로 입힐 수도 있어요.</p>
+  <h2 id="shadow">그림자</h2>
+  <p>오브젝트마다 <b>그림자</b>를 켜고 끌 수 있어요.</p>
+</article>
+
+<article data-page="lights" data-group="모델링" data-title="조명과 카메라" data-icon="fa-lightbulb">
+  <h1>조명과 카메라</h1>
+  <h2 id="lights">조명 3종</h2>
+  <table>
+    <tr><th>태양</th><td>멀리서 한 방향으로 비추는 빛. 장면 전체를 고르게 밝혀요.</td></tr>
+    <tr><th>전구</th><td>한 점에서 사방으로 퍼지는 빛</td></tr>
+    <tr><th>스포트</th><td>원뿔 모양으로 한 곳을 비추는 빛</td></tr>
+  </table>
+  <p>속성에서 색과 세기를 바꾸고, 조명도 키프레임으로 움직일 수 있어요.</p>
+  <h2 id="camera">카메라</h2>
+  <p>카메라를 추가하고 옮겨서 구도를 잡아요. <kbd>Numpad 0</kbd>을 누르면 카메라가 보는 화면으로 바뀌어요.</p>
+  <table class="keys">
+    <tr><td><kbd>Numpad 0</kbd></td><td>카메라 시점 켜기 / 끄기</td></tr>
+    <tr><td><kbd>Numpad 1</kbd></td><td>정면 (<kbd>Ctrl</kbd>과 함께 누르면 뒤)</td></tr>
+    <tr><td><kbd>Numpad 3</kbd></td><td>오른쪽 (<kbd>Ctrl</kbd>과 함께 누르면 왼쪽)</td></tr>
+    <tr><td><kbd>Numpad 7</kbd></td><td>위 (<kbd>Ctrl</kbd>과 함께 누르면 아래)</td></tr>
+    <tr><td><kbd>Numpad .</kbd></td><td>선택한 것에 맞추기</td></tr>
+  </table>
+</article>
+
+<article data-page="import" data-group="모델링" data-title="3D 모델 불러오기" data-icon="fa-file-import">
+  <h1>3D 모델 불러오기</h1>
+  <p class="lead">다른 곳에서 만든 모델을 그대로 가져와 장면에 쓸 수 있어요.</p>
+  <h2 id="how">불러오기</h2>
+  <p>추가 메뉴의 <b>3D 모델 불러오기</b>를 누르거나, 모델 파일을 ODIT 3D 창으로 끌어다 놓아요.</p>
+  <h2 id="formats">지원 형식</h2>
+  <p>GLB, GLTF, FBX, OBJ, STL. 재질과 색이 함께 들어 있는 파일이라면 GLB를 권해요.</p>
+  <div class="hint"><i class="fa-solid fa-circle-info"></i><div><p>불러온 모델도 재질을 바꾸고, 옮기고, 키프레임으로 움직일 수 있어요.</p></div></div>
+</article>
+
+<!-- ───────────────────────── 애니메이션 ───────────────────────── -->
+<article data-page="keyframes" data-group="애니메이션" data-title="키프레임" data-icon="fa-diamond">
+  <h1>키프레임</h1>
+  <p class="lead">어떤 값이 언제 얼마인지 찍어 두면, 그 사이를 자연스럽게 채워요. 위치·회전·크기뿐 아니라 모든 값에 찍을 수 있어요.</p>
+  <h2 id="add">찍는 방법</h2>
+  <ul>
+    <li>오브젝트를 선택하고 <kbd>I</kbd>를 누르면 지금 시간에 변형 키프레임이 찍혀요.</li>
+    <li>속성 옆의 <b>◆</b>를 누르면 그 값에만 찍혀요.</li>
+    <li>키프레임이 있는 값은 시간을 옮겨 값을 바꾸면 새 키프레임이 자동으로 찍혀요.</li>
+  </ul>
+  <h2 id="autokey">자동 키</h2>
+  <p>타임라인의 <b>자동 키</b>를 켜면 무엇이든 움직이는 순간 키프레임이 돼요. 빠르게 동작을 잡을 때 편해요.</p>
+  <h2 id="easing">움직임 곡선 41종</h2>
+  <p>키프레임 사이를 어떤 느낌으로 이을지 골라요. 부드럽게, 빠르게, 튕기기, 탄성, 단계 등이 있어요.</p>
+  <h2 id="edit">옮기기와 지우기</h2>
+  <p>타임라인 아래쪽 키프레임 줄에서 점을 끌어 시간을 옮기고, 선택한 뒤 <kbd>Delete</kbd>로 지워요.</p>
+</article>
+
+<article data-page="motions" data-group="애니메이션" data-title="모션 프리셋" data-icon="fa-person-running">
+  <h1>모션 프리셋</h1>
+  <p class="lead">오브젝트를 선택하고 왼쪽 <b>모션</b> 탭에서 누르면, 키프레임이 알아서 만들어져요.</p>
+  <table>
+    <tr><th>계속 움직이기</th><td>회전, 통통, 둥실, 흔들흔들, 두근두근, 공전</td></tr>
+    <tr><th>등장</th><td>뿅 등장, 떨어지기, 나타나기</td></tr>
+    <tr><th>퇴장</th><td>뿅 퇴장, 사라지기</td></tr>
+    <tr><th>한 번</th><td>뒤집기</td></tr>
+  </table>
+  <p>만들어진 키프레임은 직접 옮기거나 값을 고칠 수 있어요.</p>
+</article>
+
+<!-- ───────────────────────── 영상 ───────────────────────── -->
+<article data-page="shots" data-group="영상" data-title="타임라인과 카메라 샷" data-icon="fa-video">
+  <h1>타임라인과 카메라 샷</h1>
+  <p class="lead">영상은 카메라 샷을 이어 붙여서 만들어져요. 샷마다 어떤 카메라로 볼지 정해요.</p>
+  <h2 id="add">샷 넣기</h2>
+  <p>카메라를 선택하고 타임라인의 <b>샷 넣기</b>를 누르면 재생헤드 위치에 그 카메라의 샷이 생겨요. 샷 끝을 끌어 길이를 바꿔요.</p>
+  <h2 id="transition">전환</h2>
+  <p>샷을 선택하고 오른쪽에서 앞 샷과 어떻게 이어질지 골라요.</p>
+  <table>
+    <tr><th>컷</th><td>바로 넘어가요</td></tr>
+    <tr><th>암전</th><td>검게 어두워졌다가 밝아져요</td></tr>
+    <tr><th>카메라 이동</th><td>앞 카메라에서 다음 카메라로 부드럽게 날아가요</td></tr>
+  </table>
+  <p><b>전환 길이</b>도 따로 정할 수 있어요.</p>
+  <h2 id="edit">자르기와 정리</h2>
+  <p><kbd>Ctrl</kbd> + <kbd>B</kbd>로 재생헤드에서 클립을 자르고, <kbd>Delete</kbd>로 지워요. 타임라인 오른쪽 위에서 확대·축소하거나 <b>맞춤</b>으로 전체를 봐요.</p>
+  <h2 id="scene">화면 크기와 프레임레이트</h2>
+  <p>오른쪽 <b>장면</b> 탭에서 가로 720p · 1080p · 4K, 세로 쇼츠, 세로 4:5, 정사각형 중 고르고, 프레임레이트는 24 · 30 · 60 중에서 골라요.</p>
+</article>
+
+<article data-page="titles" data-group="영상" data-title="자막" data-icon="fa-font">
+  <h1>자막</h1>
+  <p class="lead">화면 위에 얹는 글자예요. 장면 속에 세우는 입체 글자는 <a href="#objects">3D 글자</a>를 쓰세요.</p>
+  <h2 id="styles">스타일 7가지</h2>
+  <p>왼쪽 <b>텍스트</b> 탭에서 기본, 큰 제목, 포인트, 자막, 타자기, 흐림 등장, 라벨 중 골라요.</p>
+  <h2 id="anim">등장 방식</h2>
+  <p>없음, 페이드, 떠오르기, 팝, 타자기, 흐림, 밀려오기 중에서 고를 수 있어요.</p>
+</article>
+
+<article data-page="effects" data-group="영상" data-title="효과" data-icon="fa-wand-magic-sparkles">
+  <h1>효과</h1>
+  <p class="lead">영상 전체의 느낌을 바꿔요. 왼쪽 <b>효과</b> 탭에서 누르면 타임라인의 효과 줄에 올라가고, 끝을 끌어 걸리는 구간을 정해요.</p>
+  <h2 id="list">효과 12종</h2>
+  <p>빛 번짐, 비네트, 필름 노이즈, 흑백, 따뜻하게, 차갑게, 페이드, 플래시, 색수차, 카메라 흔들림, 픽셀, 반전.</p>
+  <p>효과를 선택하면 오른쪽에서 세기를 바꿀 수 있어요.</p>
+</article>
+
+<article data-page="audio" data-group="영상" data-title="오디오" data-icon="fa-music">
+  <h1>오디오</h1>
+  <p>왼쪽 <b>오디오</b> 탭에서 파일을 고르거나, 오디오 파일을 창으로 끌어다 놓으면 타임라인의 오디오 줄에 올라가요. 끌어서 시작 위치를 옮기고, 오른쪽에서 볼륨을 바꿔요.</p>
+  <p>지원 형식: MP3, WAV, M4A, AAC, FLAC, OGG</p>
+</article>
+
+<!-- ───────────────────────── 내보내기 ───────────────────────── -->
+<article data-page="export" data-group="내보내기 · 프로젝트" data-title="내보내기" data-icon="fa-file-export">
+  <h1>내보내기</h1>
+  <p class="lead">오른쪽 위 <b>내보내기</b>나 <kbd>Ctrl</kbd> + <kbd>E</kbd>로 열어요.</p>
+  <h2 id="formats">형식</h2>
+  <table>
+    <tr><th>MP4</th><td>어디서나 재생되는 영상</td></tr>
+    <tr><th>WebM</th><td>웹용 영상</td></tr>
+    <tr><th>GIF</th><td>움직이는 이미지 (최대 24fps)</td></tr>
+    <tr><th>PNG</th><td>지금 화면 한 장</td></tr>
+  </table>
+  <h2 id="options">설정</h2>
+  <p>크기는 <b>원본 · 절반 · 2배</b>, 화질은 <b>높음 · 보통 · 작게</b> 중에서 골라요. 프레임레이트와 길이는 장면 설정을 따라요.</p>
+</article>
+
+<article data-page="projects" data-group="내보내기 · 프로젝트" data-title="저장과 열기" data-icon="fa-floppy-disk">
+  <h1>저장과 열기</h1>
+  <h2 id="save">프로젝트 파일</h2>
+  <p>장면은 <code>.odit3d</code> 파일로 저장돼요. <kbd>Ctrl</kbd> + <kbd>S</kbd> 저장, <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>S</kbd> 다른 이름으로 저장. 파일을 창으로 끌어다 놓으면 바로 열려요.</p>
+  <h2 id="auto">자동 저장</h2>
+  <p>한 번 저장한 프로젝트는 1분마다 알아서 다시 저장돼요. 새 프로젝트는 처음 <kbd>Ctrl</kbd> + <kbd>S</kbd>를 누를 때까지 기다려요. 저장하지 않고 닫으려 하면 먼저 물어봐요.</p>
+  <h2 id="home">홈 화면</h2>
+  <p>홈 화면에 만든 프로젝트가 모여 있고, 검색으로 찾을 수 있어요.</p>
+</article>
+
+<!-- ───────────────────────── 도움 ───────────────────────── -->
+<article data-page="shortcuts" data-group="도움" data-title="단축키" data-icon="fa-keyboard">
+  <h1>단축키</h1>
+  <h2 id="scene">장면</h2>
+  <table class="keys">
+    <tr><td><kbd>Shift</kbd> + <kbd>A</kbd></td><td>추가 메뉴</td></tr>
+    <tr><td><kbd>G</kbd> <kbd>R</kbd> <kbd>S</kbd></td><td>이동 / 회전 / 크기 (+ <kbd>X</kbd> <kbd>Y</kbd> <kbd>Z</kbd> 축 고정)</td></tr>
+    <tr><td><kbd>Shift</kbd> + <kbd>D</kbd></td><td>복제하고 바로 옮기기</td></tr>
+    <tr><td><kbd>Ctrl</kbd> + <kbd>D</kbd></td><td>복제</td></tr>
+    <tr><td><kbd>X</kbd> · <kbd>Delete</kbd></td><td>삭제</td></tr>
+    <tr><td><kbd>H</kbd> / <kbd>Alt</kbd> + <kbd>H</kbd></td><td>숨기기 / 모두 보이기</td></tr>
+    <tr><td><kbd>F</kbd></td><td>선택한 것에 맞추기</td></tr>
+    <tr><td><kbd>Esc</kbd></td><td>선택 해제</td></tr>
+    <tr><td><kbd>Tab</kbd></td><td>편집 모드</td></tr>
+  </table>
+  <h2 id="edit">편집 모드</h2>
+  <table class="keys">
+    <tr><td><kbd>1</kbd> / <kbd>3</kbd></td><td>꼭짓점 / 면 선택</td></tr>
+    <tr><td><kbd>A</kbd></td><td>전체 선택</td></tr>
+    <tr><td><kbd>E</kbd></td><td>돌출</td></tr>
+    <tr><td><kbd>M</kbd></td><td>병합</td></tr>
+    <tr><td><kbd>X</kbd></td><td>삭제</td></tr>
+  </table>
+  <h2 id="view">보기</h2>
+  <table class="keys">
+    <tr><td><kbd>Numpad 0</kbd></td><td>카메라 시점</td></tr>
+    <tr><td><kbd>Numpad 1</kbd> <kbd>3</kbd> <kbd>7</kbd></td><td>정면 / 오른쪽 / 위 (<kbd>Ctrl</kbd>로 반대편)</td></tr>
+    <tr><td><kbd>Numpad .</kbd></td><td>선택한 것에 맞추기</td></tr>
+  </table>
+  <h2 id="time">시간 · 파일</h2>
+  <table class="keys">
+    <tr><td><kbd>Space</kbd></td><td>재생 / 일시정지</td></tr>
+    <tr><td><kbd>←</kbd> <kbd>→</kbd></td><td>한 프레임 (<kbd>Shift</kbd>와 함께 1초)</td></tr>
+    <tr><td><kbd>Home</kbd> <kbd>End</kbd></td><td>처음 / 끝</td></tr>
+    <tr><td><kbd>I</kbd></td><td>키프레임 넣기</td></tr>
+    <tr><td><kbd>Ctrl</kbd> + <kbd>B</kbd></td><td>자르기</td></tr>
+    <tr><td><kbd>Ctrl</kbd> + <kbd>Z</kbd> / <kbd>Y</kbd></td><td>실행 취소 / 다시 실행</td></tr>
+    <tr><td><kbd>Ctrl</kbd> + <kbd>S</kbd></td><td>저장</td></tr>
+    <tr><td><kbd>Ctrl</kbd> + <kbd>E</kbd></td><td>내보내기</td></tr>
+  </table>
+</article>
+
+<article data-page="troubleshooting" data-group="도움" data-title="문제 해결" data-icon="fa-screwdriver-wrench">
+  <h1>문제 해결</h1>
+  <h2 id="smartscreen">설치할 때 "Windows의 PC 보호"가 떠요</h2>
+  <p><b>추가 정보</b> → <b>실행</b>을 누르면 돼요.</p>
+  <h2 id="dark">장면이 너무 어두워요</h2>
+  <p><b>추가</b>에서 <b>태양</b> 조명을 넣거나, 있는 조명의 세기를 올려 보세요. 렌더 보기에서 가장 정확하게 보여요.</p>
+  <h2 id="lost">오브젝트가 안 보여요</h2>
+  <ul>
+    <li><kbd>Alt</kbd> + <kbd>H</kbd>로 숨긴 것을 모두 다시 보이게 해 보세요.</li>
+    <li>오른쪽 장면 목록에서 찾아 선택한 뒤 <kbd>F</kbd>를 누르면 그쪽으로 화면이 옮겨가요.</li>
+  </ul>
+  <h2 id="model">모델이 이상하게 불러와져요</h2>
+  <p>크기가 너무 크거나 작아 안 보일 수 있어요. 선택하고 <kbd>F</kbd>로 찾은 뒤 크기를 조절하세요. 재질이 빠졌다면 GLB 형식으로 다시 내보낸 파일을 써 보세요.</p>
+  <h2 id="export">내보내기가 느려요</h2>
+  <p>크기를 <b>절반</b>으로, 화질을 <b>보통</b>으로 낮추면 빨라져요. 그래픽 카드 드라이버를 최신으로 바꾸는 것도 도움이 돼요.</p>
+  <div class="hint"><i class="fa-solid fa-bug"></i><div><p>여기 없는 문제라면 <a href="/3d/report">버그 제보</a>로 알려 주세요.</p></div></div>
+</article>
+
+<article data-page="faq" data-group="도움" data-title="자주 묻는 질문" data-icon="fa-circle-question">
+  <h1>자주 묻는 질문</h1>
+  <h2 id="odit">ODIT와는 뭐가 달라요?</h2>
+  <p><a href="/">ODIT</a>는 찍어 둔 영상을 자르고 다듬는 편집기예요. ODIT 3D는 3D 장면을 직접 만들어서 영상으로 뽑는 앱이에요. 둘 다 따로 설치해서 함께 쓸 수 있어요.</p>
+  <h2 id="account">계정이 필요한가요?</h2>
+  <p>아니요. 가입이나 로그인 없이 바로 쓸 수 있고, 모든 작업은 내 PC에만 있어요.</p>
+  <h2 id="mac">맥이나 리눅스에서도 되나요?</h2>
+  <p>지금은 Windows 10 · 11 (64비트)만 지원해요.</p>
+  <h2 id="bug">버그는 어디에 알리나요?</h2>
+  <p><a href="/3d/report">버그 제보</a> 페이지에서 스크린샷과 함께 보내 주세요.</p>
+</article>
+
+    <nav class="docs-pager" id="pager"></nav>
+  </main>
+
+  <aside class="docs-toc" id="toc"></aside>
+</div>
+
+</body>
+</html>

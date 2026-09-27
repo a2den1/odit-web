@@ -1,4 +1,4 @@
-const { send, readBody, verifyCaptcha, clientIp, sendDM, clean } = require('./_lib')
+const { send, readBody, verifyCaptcha, clientIp, sendDM, clean, PRODUCTS, productOf } = require('./_lib')
 
 // Vercel caps a request at 4.5 MB; base64 adds a third, so ~3 MB of files fit.
 const MAX_FILES = 6
@@ -9,7 +9,7 @@ const safeName = (n, i) => {
   return base || `file-${i + 1}`
 }
 
-// POST { token, what, steps, version, files: [{ name, type, data(base64) }], website(honeypot) }
+// POST { token, product, what, steps, version, files: [{ name, type, data(base64) }], website(honeypot) }
 module.exports = async (req, res) => {
   if (req.method !== 'POST') return send(res, 405, { error: 'POST only' })
   const b = await readBody(req, 4.6 * 1024 * 1024)
@@ -45,7 +45,7 @@ module.exports = async (req, res) => {
   try {
     await sendDM({
       embeds: [{
-        title: 'ODIT 버그 제보',
+        title: PRODUCTS[productOf(b.product)].name + ' 버그 제보',
         description: what,
         color: 0xff6b5b,
         fields,

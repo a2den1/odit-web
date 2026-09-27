@@ -72,6 +72,7 @@ function play(el) {
   if (el.dataset.anim === 'play') {
     const bar = document.createElement('span')
     bar.className = 'playbar'
+    bar.addEventListener('animationend', () => bar.remove())
     el.append(bar)
   }
   el.classList.add('in')

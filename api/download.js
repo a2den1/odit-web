@@ -1,6 +1,6 @@
-const { send, readBody, getReleases, verifyCaptcha, makeTicket, clientIp } = require('./_lib')
+const { send, readBody, getReleases, verifyCaptcha, makeTicket, clientIp, productOf } = require('./_lib')
 
-// POST { token, assetId } → { url, name, version, ticket }
+// POST { token, assetId, product } → { url, name, version, ticket }
 module.exports = async (req, res) => {
   if (req.method !== 'POST') return send(res, 405, { error: 'POST only' })
   const body = await readBody(req)
@@ -10,7 +10,8 @@ module.exports = async (req, res) => {
   }
 
   let releases
-  try { releases = await getReleases() } catch { return send(res, 502, { error: '릴리스 목록을 불러오지 못했습니다' }) }
+  const product = productOf(body.product)
+  try { releases = await getReleases(product) } catch { return send(res, 502, { error: '릴리스 목록을 불러오지 못했습니다' }) }
 
   let found = null
   for (const r of releases) {
@@ -25,6 +26,6 @@ module.exports = async (req, res) => {
     url: found.a.url,
     name: found.a.name,
     version: found.r.version,
-    ticket: makeTicket({ v: found.r.version, f: found.a.name }),
+    ticket: makeTicket({ v: found.r.version, f: found.a.name, p: product }),
   }, { 'Cache-Control': 'no-store' })
 }

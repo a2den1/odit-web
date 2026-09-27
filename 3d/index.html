@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ODIT 3D</title>
+  <meta name="description" content="3D 장면을 만들고, 카메라와 자막·효과·음악을 얹어 바로 영상으로 내보내는 Windows 앱.">
+  <meta name="theme-color" content="#131316">
+  <meta property="og:title" content="ODIT 3D">
+  <meta property="og:description" content="상상한 장면을 바로 영상으로.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/assets/shots-3d/render.webp">
+  <link rel="icon" href="/assets/logo-3d.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icon-3d.png">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link rel="stylesheet" href="/styles.css">
+  <script>document.documentElement.classList.add('js')</script>
+  <script src="/main.js" defer></script>
+  <script src="/download.js" defer></script>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <a class="mark" href="/3d" aria-label="ODIT 3D 처음으로"><img src="/assets/mark.png" alt="" width="39" height="24"><span class="mark-3d">3D</span></a>
+    <nav class="tabs">
+      <a href="/3d#features">기능</a>
+      <a href="/3d/help">도움말</a>
+      <a href="/3d/report">버그 제보</a>
+      <a href="/3d/download">다운로드</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <h1 data-anim="flip">상상한 장면을<br>바로 영상으로</h1>
+    <a class="btn" data-download="latest" href="/3d/download"><i class="fa-brands fa-windows"></i><span>ODIT 3D 받기</span></a>
+    <figure class="frame hero-shot reveal">
+      <img src="/assets/shots-3d/editor.webp" srcset="/assets/shots-3d/editor-sm.webp 820w, /assets/shots-3d/editor.webp 1640w" sizes="(max-width: 1120px) 100vw, 1080px" alt="ODIT 3D 편집 화면" width="1640" height="1000" fetchpriority="high">
+    </figure>
+  </section>
+
+  <section class="big" id="features">
+    <h2 data-anim="drop">도형 몇 개면<br>장면이 시작돼요</h2>
+    <figure class="frame reveal"><img loading="lazy" src="/assets/shots-3d/add.webp" srcset="/assets/shots-3d/add-sm.webp 820w, /assets/shots-3d/add.webp 1640w" sizes="(max-width: 1120px) 100vw, 1080px" alt="추가 메뉴" width="1640" height="1000"></figure>
+  </section>
+
+  <section class="big">
+    <h2 data-anim="extrude">꼭짓점 하나까지<br>직접 다듬고</h2>
+    <figure class="frame reveal"><img loading="lazy" src="/assets/shots-3d/edit.webp" srcset="/assets/shots-3d/edit-sm.webp 820w, /assets/shots-3d/edit.webp 1640w" sizes="(max-width: 1120px) 100vw, 1080px" alt="편집 모드" width="1640" height="1000"></figure>
+  </section>
+
+  <section class="big">
+    <h2 data-anim="orbit">카메라가 움직이면<br>그대로 영상이 돼요</h2>
+    <figure class="frame reveal"><img loading="lazy" src="/assets/shots-3d/camera.webp" srcset="/assets/shots-3d/camera-sm.webp 820w, /assets/shots-3d/camera.webp 1640w" sizes="(max-width: 1120px) 100vw, 1080px" alt="카메라 시점" width="1640" height="1000"></figure>
+  </section>
+
+  <section class="big">
+    <h2 data-anim="shine">재질과 빛으로<br>분위기를 입히고</h2>
+    <figure class="frame reveal"><img loading="lazy" src="/assets/shots-3d/render.webp" srcset="/assets/shots-3d/render-sm.webp 820w, /assets/shots-3d/render.webp 1640w" sizes="(max-width: 1120px) 100vw, 1080px" alt="렌더 화면" width="1640" height="1000"></figure>
+  </section>
+
+  <section class="grid">
+    <article class="card card-list reveal">
+      <h3 data-anim="color">한 번에 입히는<br>재질 16종</h3>
+      <ul class="pills"><li>점토</li><li>플라스틱</li><li>유광</li><li>크롬</li><li>금</li><li>구리</li><li>브러시드</li><li>유리</li><li>고무</li><li>네온</li><li>용암</li><li>젤리</li><li>민트</li><li>하늘</li><li>와이어</li><li>로우폴리</li></ul>
+    </article>
+    <article class="card card-list reveal">
+      <h3 data-anim="bounce">누르면 바로 움직이는<br>모션 12종</h3>
+      <ul class="pills"><li>회전</li><li>통통</li><li>둥실</li><li>뿅 등장</li><li>뿅 퇴장</li><li>떨어지기</li><li>흔들흔들</li><li>두근두근</li><li>뒤집기</li><li>공전</li><li>나타나기</li><li>사라지기</li></ul>
+    </article>
+    <article class="card card-list reveal">
+      <h3 data-anim="ghost">화면을 바꾸는<br>효과 12종</h3>
+      <ul class="pills"><li>빛 번짐</li><li>비네트</li><li>필름 노이즈</li><li>흑백</li><li>따뜻하게</li><li>차갑게</li><li>페이드</li><li>플래시</li><li>색수차</li><li>카메라 흔들림</li><li>픽셀</li><li>반전</li></ul>
+    </article>
+    <article class="card card-list reveal">
+      <h3 data-anim="type">한글 3D 글자와<br>자막 7가지</h3>
+      <ul class="pills"><li>기본</li><li>큰 제목</li><li>포인트</li><li>자막</li><li>타자기</li><li>흐림 등장</li><li>라벨</li></ul>
+    </article>
+    <article class="card card-list reveal">
+      <h3 data-anim="zoom">만들어 둔 모델도<br>그대로 불러오기</h3>
+      <ul class="pills big-pills"><li>GLB</li><li>GLTF</li><li>FBX</li><li>OBJ</li><li>STL</li></ul>
+    </article>
+    <article class="card card-list reveal">
+      <h3 data-anim="play">원하는 형식으로<br>내보내기</h3>
+      <ul class="pills big-pills"><li>MP4</li><li>WebM</li><li>GIF</li><li>PNG</li></ul>
+    </article>
+  </section>
+
+  <section class="plain">
+    <h2 data-anim="mask">모델링부터 영상까지<br>한 프로그램 안에서</h2>
+  </section>
+
+  <section class="end">
+    <img class="reveal" src="/assets/logo-3d.svg" alt="" width="88" height="88">
+    <h2 data-anim="clap">첫 장면을<br>ODIT 3D로 만들어 보세요</h2>
+    <a class="btn" data-download="latest" href="/3d/download"><i class="fa-brands fa-windows"></i><span>ODIT 3D 받기</span></a>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <img class="foot-tg" src="/assets/twelvegames.png" alt="TwelveGames" width="139" height="72">
+  <span>© 2026 ODIT</span>
+  <a href="/">ODIT</a>
+  <a href="/3d/credits">크레딧</a>
+</footer>
+
+</body>
+</html>
