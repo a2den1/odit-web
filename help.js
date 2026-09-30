@@ -56,10 +56,14 @@
     closeMenu()
   }
 
+  // a heading's own words, without the link icon appended to it
+  const headingText = (h) => [...h.childNodes].filter((n) => !(n.classList && n.classList.contains('anchor'))).map((n) => n.textContent).join('').trim()
+  const esc = (t) => t.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]))
+
   function buildToc(page) {
     const hs = [...page.querySelectorAll('h2[id]')]
     toc.innerHTML = hs.length ? `<p class="toc-title">이 페이지</p>` + hs.map((h) =>
-      `<a href="#${page.dataset.page}/${h.id.split('--')[1]}" data-h="${h.id}">${h.firstChild.textContent}</a>`).join('') : ''
+      `<a href="#${page.dataset.page}/${h.id.split('--')[1]}" data-h="${h.id}">${esc(headingText(h))}</a>`).join('') : ''
     spy?.disconnect()
     if (!hs.length) return
     const links = [...toc.querySelectorAll('a')]
