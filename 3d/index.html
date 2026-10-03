@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ODIT 3D</title>
   <meta name="description" content="3D 장면을 만들고, 카메라와 자막·효과·음악을 얹어 바로 영상으로 내보내는 Windows 앱.">
-  <meta name="theme-color" content="#0c0c0e">
+  <meta name="theme-color" content="#000000">
   <meta property="og:title" content="ODIT 3D">
   <meta property="og:description" content="상상한 장면을 바로 영상으로.">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="/assets/v2-3d/render.webp">
+  <meta property="og:image" content="/assets/v4-3d/f-studio.webp">
   <link rel="icon" href="/assets/logo-3d.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/assets/icon-3d.png">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
@@ -19,7 +19,7 @@
   <script>document.documentElement.classList.add('js')</script>
   <script src="/main.js" defer></script>
 </head>
-<body class="land">
+<body class="land v4">
 
 <header class="top">
   <div class="top-inner">
@@ -35,11 +35,79 @@
 
 <main>
 
-  <section class="v3-hero">
+  <section class="h4">
     <h1 data-anim="flip">상상한 장면을<br>바로 영상으로</h1>
     <a class="btn btn-lg" href="/3d/download"><i class="fa-brands fa-windows"></i><span>ODIT 3D 받기</span></a>
-    <div class="tilt" data-tilt>
-      <img src="/assets/v2-3d/hero.webp" srcset="/assets/v2-3d/hero-sm.webp 820w, /assets/v2-3d/hero.webp 1640w" sizes="(max-width: 1200px) 100vw, 1160px" alt="ODIT 3D 편집 화면" width="1640" height="1000" fetchpriority="high">
+  </section>
+  <div class="zoom" data-zoom>
+    <div class="zoom-pin">
+      <img src="/assets/v4-3d/f-studio.webp" srcset="/assets/v4-3d/f-studio-sm.webp 960w, /assets/v4-3d/f-studio.webp 1920w" sizes="100vw" alt="ODIT 3D로 만든 크롬 공과 네온 고리" width="1920" height="1080" fetchpriority="high">
+    </div>
+  </div>
+
+  <section class="car" id="features" data-carousel>
+    <h2 class="sec-head" data-anim="drop">한 장면씩<br>살펴보기</h2>
+    <div class="car-track">
+      <figure class="car-slide"><img loading="lazy" src="/assets/v4-3d/f-playground.webp" srcset="/assets/v4-3d/f-playground-sm.webp 960w, /assets/v4-3d/f-playground.webp 1920w" sizes="(max-width: 900px) 88vw, 1100px" alt="파스텔 도형들" width="1920" height="1080"><figcaption>도형 몇 개면<br>장면이 시작돼요</figcaption></figure>
+      <figure class="car-slide"><img loading="lazy" src="/assets/v4-3d/f-space.webp" srcset="/assets/v4-3d/f-space-sm.webp 960w, /assets/v4-3d/f-space.webp 1920w" sizes="(max-width: 900px) 88vw, 1100px" alt="고리가 있는 행성" width="1920" height="1080"><figcaption>자막까지 얹어<br>한 장면 완성</figcaption></figure>
+      <figure class="car-slide"><img loading="lazy" src="/assets/v4-3d/f-space-b.webp" srcset="/assets/v4-3d/f-space-b-sm.webp 960w, /assets/v4-3d/f-space-b.webp 1920w" sizes="(max-width: 900px) 88vw, 1100px" alt="옆 카메라에서 본 행성" width="1920" height="1080"><figcaption>카메라에서 카메라로<br>부드럽게 날아가기</figcaption></figure>
+      <figure class="car-slide"><img loading="lazy" src="/assets/v4-3d/f-knot.webp" srcset="/assets/v4-3d/f-knot-sm.webp 960w, /assets/v4-3d/f-knot.webp 1920w" sizes="(max-width: 900px) 88vw, 1100px" alt="구리 매듭" width="1920" height="1080"><figcaption>누르면 바로 도는<br>모션 프리셋</figcaption></figure>
+      <figure class="car-slide"><img loading="lazy" src="/assets/v4-3d/f-materials.webp" srcset="/assets/v4-3d/f-materials-sm.webp 960w, /assets/v4-3d/f-materials.webp 1920w" sizes="(max-width: 900px) 88vw, 1100px" alt="재질이 다른 공 여섯 개" width="1920" height="1080"><figcaption>금, 유리, 크롬, 젤리, 네온<br>재질 16종</figcaption></figure>
+    </div>
+    <div class="car-ctrl">
+      <button class="car-btn car-prev" type="button" aria-label="이전"><i class="fa-solid fa-chevron-left"></i></button>
+      <div class="car-dots"></div>
+      <button class="car-btn car-play" type="button" aria-label="일시정지"><i class="fa-solid fa-pause"></i></button>
+      <button class="car-btn car-next" type="button" aria-label="다음"><i class="fa-solid fa-chevron-right"></i></button>
+    </div>
+  </section>
+
+  <section class="sec wide">
+    <h2 class="sec-head" data-anim="extrude">놓고, 빚고,<br>찍고, 확인하고</h2>
+    <div class="story" data-story>
+      <div class="story-steps">
+        <div class="step"><h3>마우스 자리에<br>바로 추가</h3><div class="kbd-row"><kbd>Shift + A</kbd></div></div>
+        <div class="step"><h3>꼭짓점과 면을<br>직접 끌어 빚기</h3><div class="kbd-row"><kbd>Tab</kbd><kbd>E</kbd><kbd>M</kbd></div></div>
+        <div class="step"><h3>카메라가 보는 그대로<br>영상이 돼요</h3><div class="kbd-row"><kbd>Numpad 0</kbd></div></div>
+        <div class="step"><h3>편집하면서<br>완성 화면 확인</h3><div class="kbd-row"><kbd>프리뷰 패널</kbd></div></div>
+      </div>
+      <div class="story-stage">
+        <div class="story-frame" style="aspect-ratio:1640/960">
+          <img class="story-pic" loading="lazy" src="/assets/v4-3d/ui-add.webp" alt="추가 메뉴" width="1640" height="960">
+          <img class="story-pic" loading="lazy" src="/assets/v4-3d/ui-edit.webp" alt="편집 모드" width="1640" height="960">
+          <img class="story-pic" loading="lazy" src="/assets/v4-3d/ui-camera.webp" alt="카메라 시점" width="1640" height="960">
+          <img class="story-pic" loading="lazy" src="/assets/v4-3d/ui-preview.webp" alt="프리뷰 패널" width="1640" height="960">
+          <span class="story-bar"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <h2 class="sec-head center" data-anim="shine">같은 장면,<br>세 가지 보기</h2>
+    <div class="viewer" data-viewer>
+      <div class="view-stage">
+        <img class="view-pic" loading="lazy" src="/assets/v4-3d/f-materials.webp" alt="렌더" width="1920" height="1080">
+        <img class="view-pic" loading="lazy" src="/assets/v4-3d/f-materials-solid.webp" alt="솔리드" width="1920" height="1080">
+        <img class="view-pic" loading="lazy" src="/assets/v4-3d/f-materials-wire.webp" alt="와이어" width="1920" height="1080">
+      </div>
+      <div class="view-tabs" role="tablist">
+        <span class="view-pill"></span>
+        <button type="button" role="tab" data-show>렌더</button>
+        <button type="button" role="tab" data-show>솔리드</button>
+        <button type="button" role="tab" data-show>와이어</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <h2 class="sec-head center" data-anim="mask">뼈대에서<br>완성까지 밀어 보기</h2>
+    <div class="cmp" data-compare>
+      <img src="/assets/v4-3d/f-materials-wire.webp" loading="lazy" alt="와이어" width="1920" height="1080">
+      <img class="cmp-after" src="/assets/v4-3d/f-materials.webp" loading="lazy" alt="렌더" width="1920" height="1080">
+      <span class="cmp-line"></span>
+      <span class="cmp-tag l">와이어</span><span class="cmp-tag r">렌더</span>
+      <span class="cmp-handle" role="slider" tabindex="0" aria-label="비교 위치" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><i class="fa-solid fa-left-right"></i></span>
     </div>
   </section>
 
@@ -50,73 +118,20 @@
     <div class="stat"><b data-count="41">41</b><span>움직임 곡선</span></div>
   </section>
 
-  <section class="bento" id="features">
-
-    <article class="tile w7 reveal">
-      <h2 data-anim="drop">도형 몇 개면<br>장면이 시작돼요</h2>
-      <img class="shot" loading="lazy" src="/assets/v2-3d/add.webp" srcset="/assets/v2-3d/add-sm.webp 505w, /assets/v2-3d/add.webp 1010w" sizes="(max-width: 900px) 100vw, 680px" alt="추가 메뉴" width="1010" height="650">
-    </article>
-
-    <article class="tile w5 reveal">
-      <h2 data-anim="extrude">꼭짓점 하나까지<br>직접 다듬고</h2>
-      <img class="shot" loading="lazy" src="/assets/v2-3d/edit.webp" srcset="/assets/v2-3d/edit-sm.webp 505w, /assets/v2-3d/edit.webp 1010w" sizes="(max-width: 900px) 100vw, 480px" alt="편집 모드" width="1010" height="710">
-    </article>
-
-    <article class="tile w5 reveal">
-      <h2 data-anim="orbit">카메라가 움직이면<br>그대로 영상이 돼요</h2>
-      <img class="shot" loading="lazy" src="/assets/v2-3d/camera.webp" srcset="/assets/v2-3d/camera-sm.webp 505w, /assets/v2-3d/camera.webp 1010w" sizes="(max-width: 900px) 100vw, 480px" alt="카메라 시점" width="1010" height="650">
-    </article>
-
-    <article class="tile w7 reveal">
-      <h2 data-anim="shine">재질과 빛으로<br>분위기를 입히고</h2>
-      <img class="shot" loading="lazy" src="/assets/v2-3d/render.webp" srcset="/assets/v2-3d/render-sm.webp 505w, /assets/v2-3d/render.webp 1010w" sizes="(max-width: 900px) 100vw, 680px" alt="렌더 보기" width="1010" height="650">
-    </article>
-
-    <article class="tile w12 reveal">
-      <h2 data-anim="focus">만들면서 바로<br>완성 화면 확인</h2>
-      <img class="shot wide" loading="lazy" src="/assets/v2-3d/preview.webp" srcset="/assets/v2-3d/preview-sm.webp 540w, /assets/v2-3d/preview.webp 1080w" sizes="(max-width: 1200px) 100vw, 1160px" alt="프리뷰 패널" width="1080" height="660">
-    </article>
-
-    <article class="tile w7 reveal">
-      <h2 data-anim="zoom">.blend 장면도<br>그대로 이어서</h2>
-      <img class="shot" loading="lazy" src="/assets/v2-3d/blendfile.webp" srcset="/assets/v2-3d/blendfile-sm.webp 670w, /assets/v2-3d/blendfile.webp 1340w" sizes="(max-width: 900px) 100vw, 680px" alt=".blend 장면 불러오기" width="1340" height="650">
-    </article>
-
-    <article class="tile w5 tall reveal">
-      <h2 data-anim="calc">내 손에 맞게<br>설정까지</h2>
-      <img class="shot fit" loading="lazy" src="/assets/v2-3d/settings.webp" alt="설정 창" width="680" height="900">
-    </article>
-
-    <article class="tile w12 reveal">
-      <h2 data-anim="drag">샷을 이어 붙이면<br>한 편의 영상</h2>
-      <img class="shot wide" loading="lazy" src="/assets/v2-3d/timeline.webp" srcset="/assets/v2-3d/timeline-sm.webp 820w, /assets/v2-3d/timeline.webp 1640w" sizes="(max-width: 1200px) 100vw, 1160px" alt="타임라인" width="1640" height="300">
-    </article>
-
-    <article class="tile w6 list reveal">
-      <h3 data-anim="color">한 번에 입히는<br>재질 16종</h3>
-      <ul class="pills"><li>점토</li><li>플라스틱</li><li>유광</li><li>크롬</li><li>금</li><li>구리</li><li>브러시드</li><li>유리</li><li>고무</li><li>네온</li><li>용암</li><li>젤리</li><li>민트</li><li>하늘</li><li>와이어</li><li>로우폴리</li></ul>
-    </article>
-    <article class="tile w6 list reveal">
-      <h3 data-anim="bounce">누르면 바로 움직이는<br>모션 12종</h3>
-      <ul class="pills"><li>회전</li><li>통통</li><li>둥실</li><li>뿅 등장</li><li>뿅 퇴장</li><li>떨어지기</li><li>흔들흔들</li><li>두근두근</li><li>뒤집기</li><li>공전</li><li>나타나기</li><li>사라지기</li></ul>
-    </article>
-    <article class="tile w4 list reveal">
-      <h3 data-anim="ghost">화면을 바꾸는<br>효과 12종</h3>
-      <ul class="pills"><li>빛 번짐</li><li>비네트</li><li>필름 노이즈</li><li>흑백</li><li>따뜻하게</li><li>차갑게</li><li>페이드</li><li>플래시</li><li>색수차</li><li>카메라 흔들림</li><li>픽셀</li><li>반전</li></ul>
-    </article>
-    <article class="tile w4 list reveal">
-      <h3 data-anim="type">한글 3D 글자와<br>자막 7가지</h3>
-      <ul class="pills"><li>기본</li><li>큰 제목</li><li>포인트</li><li>자막</li><li>타자기</li><li>흐림 등장</li><li>라벨</li></ul>
-    </article>
-    <article class="tile w4 list reveal">
-      <h3 data-anim="play">원하는 형식으로<br>내보내기</h3>
-      <ul class="pills big-pills"><li>MP4</li><li>WebM</li><li>GIF</li><li>PNG</li></ul>
-    </article>
-
+  <section class="sec">
+    <h2 class="sec-head" data-anim="zoom">더 깊이<br>들어가 보기</h2>
+    <div class="plus-grid">
+      <button class="plus" type="button" data-plus="q-mat"><h3>한 번에 입히는 재질</h3><img loading="lazy" src="/assets/v4-3d/f-materials-sm.webp" alt="" width="960" height="540" style="object-position:center"><span class="pls"><i class="fa-solid fa-plus"></i></span></button>
+      <button class="plus" type="button" data-plus="q-motion"><h3>누르면 움직이는 모션</h3><img loading="lazy" src="/assets/v4-3d/f-knot-sm.webp" alt="" width="960" height="540" style="object-position:center"><span class="pls"><i class="fa-solid fa-plus"></i></span></button>
+      <button class="plus" type="button" data-plus="q-shot"><h3>샷과 자막과 효과</h3><img loading="lazy" src="/assets/v4-3d/f-space-sm.webp" alt="" width="960" height="540" style="object-position:center"><span class="pls"><i class="fa-solid fa-plus"></i></span></button>
+      <button class="plus" type="button" data-plus="q-import"><h3>만들어 둔 모델 그대로</h3><img loading="lazy" src="/assets/v4-3d/f-playground-sm.webp" alt="" width="960" height="540" style="object-position:center"><span class="pls"><i class="fa-solid fa-plus"></i></span></button>
+      <button class="plus" type="button" data-plus="q-export"><h3>원하는 형식으로 내보내기</h3><img loading="lazy" src="/assets/v4-3d/f-space-b-sm.webp" alt="" width="960" height="540" style="object-position:center"><span class="pls"><i class="fa-solid fa-plus"></i></span></button>
+      <button class="plus" type="button" data-plus="q-settings"><h3>내 손에 맞는 설정</h3><img loading="lazy" src="/assets/v4-3d/ui-settings.webp" alt="" width="640" height="320"><span class="pls"><i class="fa-solid fa-plus"></i></span></button>
+    </div>
   </section>
 
   <section class="v3-say">
-    <h2 data-anim="mask">모델링부터 영상까지<br>한 프로그램 안에서</h2>
+    <h2 data-anim="orbit">모델링부터 영상까지<br>한 프로그램 안에서</h2>
   </section>
 
   <section class="v3-end">
@@ -126,6 +141,15 @@
   </section>
 
 </main>
+
+<div class="sheet" hidden><div class="sheet-card" role="dialog" aria-modal="true"><button class="sheet-x" type="button" aria-label="닫기"><i class="fa-solid fa-xmark"></i></button><div class="sheet-body"></div></div></div>
+
+<template id="q-mat"><h3>한 번에 입히는 재질 16종</h3><img src="/assets/v4-3d/f-materials.webp" alt="" width="1920" height="1080"><ul><li>점토</li><li>플라스틱</li><li>유광</li><li>크롬</li><li>금</li><li>구리</li><li>브러시드</li><li>유리</li><li>고무</li><li>네온</li><li>용암</li><li>젤리</li><li>민트</li><li>하늘</li><li>와이어</li><li>로우폴리</li></ul></template>
+<template id="q-motion"><h3>누르면 움직이는 모션 12종</h3><img src="/assets/v4-3d/f-knot.webp" alt="" width="1920" height="1080"><ul><li>회전</li><li>통통</li><li>둥실</li><li>뿅 등장</li><li>뿅 퇴장</li><li>떨어지기</li><li>흔들흔들</li><li>두근두근</li><li>뒤집기</li><li>공전</li><li>나타나기</li><li>사라지기</li></ul></template>
+<template id="q-shot"><h3>샷과 자막과 효과</h3><img src="/assets/v4-3d/f-space.webp" alt="" width="1920" height="1080"><ul><li>컷 · 암전 · 카메라 이동</li><li>자막 7가지</li><li>빛 번짐 · 비네트 · 필름 노이즈 · 흑백 · 색수차 · 카메라 흔들림 외 6종</li><li>배경 음악</li></ul></template>
+<template id="q-import"><h3>만들어 둔 모델 그대로</h3><img src="/assets/v4-3d/f-playground.webp" alt="" width="1920" height="1080"><ul><li>GLB</li><li>GLTF</li><li>FBX</li><li>OBJ</li><li>STL</li><li>.blend 장면에서 시작</li></ul></template>
+<template id="q-export"><h3>원하는 형식으로 내보내기</h3><img src="/assets/v4-3d/f-space-b.webp" alt="" width="1920" height="1080"><ul><li>MP4</li><li>WebM</li><li>GIF</li><li>PNG</li><li>원본 · 절반 · 2배</li><li>가로 · 세로 쇼츠 · 정사각</li></ul></template>
+<template id="q-settings"><h3>내 손에 맞는 설정</h3><img src="/assets/v4-3d/ui-settings.webp" alt="" width="640" height="320"><ul><li>화면 돌리기 버튼</li><li>3D 화면 선명도</li><li>프리뷰 위치</li><li>자동 저장 간격</li><li>새 키프레임의 움직임</li><li>자동 업데이트</li></ul></template>
 
 <footer class="foot">
   <img class="foot-tg" src="/assets/twelvegames.png" alt="TwelveGames" width="139" height="72">

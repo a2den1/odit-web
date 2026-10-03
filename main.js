@@ -132,3 +132,145 @@ if (stats && 'IntersectionObserver' in window && !reduce) {
   }, { threshold: 0.4 })
   so.observe(stats)
 }
+
+/* ════════════════ v4 interactive sections ════════════════ */
+
+// Hero frame grows to the edges as you scroll past it.
+for (const z of document.querySelectorAll('[data-zoom]')) {
+  const upd = () => {
+    const r = z.getBoundingClientRect()
+    const p = Math.min(1, Math.max(0, 1 - (r.top - innerHeight * 0.1) / (innerHeight * 0.6)))
+    z.style.setProperty('--z', (reduce ? 1 : p).toFixed(3))
+  }
+  addEventListener('scroll', upd, { passive: true }); addEventListener('resize', upd); upd()
+}
+
+// Carousel: snap scrolling, dots that fill while a slide is shown, pause, arrows.
+for (const car of document.querySelectorAll('[data-carousel]')) {
+  const track = car.querySelector('.car-track')
+  const slides = [...track.children]
+  const dots = car.querySelector('.car-dots')
+  const btn = car.querySelector('.car-play')
+  const DUR = 5000
+  let idx = 0, playing = !reduce, timer = null, start = 0
+  dots.innerHTML = slides.map((_, i) => `<button type="button" aria-label="${i + 1}번째"><i></i></button>`).join('')
+  const dotEls = [...dots.children]
+  const paint = () => dotEls.forEach((d, i) => {
+    d.classList.toggle('on', i === idx)
+    d.firstChild.style.animation = 'none'; void d.offsetWidth
+    d.firstChild.style.animation = i === idx && playing ? `carFill ${DUR}ms linear forwards` : ''
+  })
+  const go = (i, smooth = true) => {
+    idx = (i + slides.length) % slides.length
+    track.scrollTo({ left: slides[idx].offsetLeft - track.offsetLeft - (track.clientWidth - slides[idx].clientWidth) / 2, behavior: smooth ? 'smooth' : 'auto' })
+    paint(); arm()
+  }
+  const arm = () => { clearTimeout(timer); if (playing) timer = setTimeout(() => go(idx + 1), DUR) }
+  dotEls.forEach((d, i) => d.addEventListener('click', () => go(i)))
+  car.querySelector('.car-prev')?.addEventListener('click', () => go(idx - 1))
+  car.querySelector('.car-next')?.addEventListener('click', () => go(idx + 1))
+  btn?.addEventListener('click', () => {
+    playing = !playing
+    btn.querySelector('i').className = playing ? 'fa-solid fa-pause' : 'fa-solid fa-play'
+    btn.setAttribute('aria-label', playing ? '일시정지' : '재생')
+    paint(); arm()
+  })
+  if (btn && !playing) btn.querySelector('i').className = 'fa-solid fa-play'
+  // follow manual swipes
+  let st = null
+  track.addEventListener('scroll', () => {
+    clearTimeout(st)
+    st = setTimeout(() => {
+      const c = track.scrollLeft + track.clientWidth / 2
+      let best = 0, bd = Infinity
+      slides.forEach((s, i) => { const d = Math.abs(s.offsetLeft - track.offsetLeft + s.clientWidth / 2 - c); if (d < bd) { bd = d; best = i } })
+      if (best !== idx) { idx = best; paint(); arm() }
+    }, 120)
+  }, { passive: true })
+  // only run while on screen
+  new IntersectionObserver(([e]) => { if (e.isIntersecting) { paint(); arm() } else clearTimeout(timer) }, { threshold: 0.3 }).observe(car)
+  slides.forEach((s, i) => s.addEventListener('click', () => { if (i !== idx) go(i) }))
+}
+
+// Sticky story: the step in the middle of the screen picks the picture.
+for (const story of document.querySelectorAll('[data-story]')) {
+  const steps = [...story.querySelectorAll('.step')]
+  const pics = [...story.querySelectorAll('.story-pic')]
+  const set = (i) => {
+    steps.forEach((s, k) => s.classList.toggle('on', k === i))
+    pics.forEach((p, k) => p.classList.toggle('on', k === i))
+    story.style.setProperty('--prog', ((i + 1) / steps.length).toFixed(3))
+  }
+  set(0)
+  const so = new IntersectionObserver((es) => {
+    for (const e of es) if (e.isIntersecting) set(steps.indexOf(e.target))
+  }, { rootMargin: '-45% 0px -45% 0px' })
+  steps.forEach((s) => so.observe(s))
+}
+
+// Tab viewer: one big picture, buttons choose which.
+for (const v of document.querySelectorAll('[data-viewer]')) {
+  const tabs = [...v.querySelectorAll('[data-show]')]
+  const pics = [...v.querySelectorAll('.view-pic')]
+  const pill = v.querySelector('.view-pill')
+  const show = (i) => {
+    tabs.forEach((t, k) => t.setAttribute('aria-selected', String(k === i)))
+    pics.forEach((p, k) => p.classList.toggle('on', k === i))
+    const t = tabs[i]
+    if (pill && t) { pill.style.width = t.offsetWidth + 'px'; pill.style.transform = `translateX(${t.offsetLeft}px)` }
+  }
+  tabs.forEach((t, i) => t.addEventListener('click', () => show(i)))
+  addEventListener('resize', () => show(tabs.findIndex((t) => t.getAttribute('aria-selected') === 'true')))
+  requestAnimationFrame(() => show(0))
+}
+
+// Before / after: drag anywhere on the picture, or use the keyboard on the handle.
+for (const c of document.querySelectorAll('[data-compare]')) {
+  const handle = c.querySelector('.cmp-handle')
+  let pos = 50
+  const set = (p) => { pos = Math.min(100, Math.max(0, p)); c.style.setProperty('--pos', pos + '%'); handle.setAttribute('aria-valuenow', Math.round(pos)) }
+  const fromX = (x) => { const r = c.getBoundingClientRect(); set(((x - r.left) / r.width) * 100) }
+  c.addEventListener('pointerdown', (e) => { c.setPointerCapture(e.pointerId); c.classList.add('drag'); fromX(e.clientX) })
+  c.addEventListener('pointermove', (e) => { if (c.classList.contains('drag')) fromX(e.clientX) })
+  c.addEventListener('pointerup', () => c.classList.remove('drag'))
+  c.addEventListener('pointercancel', () => c.classList.remove('drag'))
+  handle.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') { set(pos - 5); e.preventDefault() }
+    if (e.key === 'ArrowRight') { set(pos + 5); e.preventDefault() }
+  })
+  // a gentle sweep the first time it comes into view, so it reads as draggable
+  if (!reduce) new IntersectionObserver(([e], o) => {
+    if (!e.isIntersecting) return
+    o.disconnect()
+    const t0 = performance.now()
+    const tick = (now) => {
+      if (c.classList.contains('drag')) return
+      const k = Math.min(1, (now - t0) / 1800)
+      set(50 + Math.sin(k * Math.PI * 2) * 22 * (1 - k))
+      if (k < 1) requestAnimationFrame(tick)
+    }
+    requestAnimationFrame(tick)
+  }, { threshold: 0.6 }).observe(c)
+  set(50)
+}
+
+// "+" cards open a larger look in a sheet.
+const sheet = document.querySelector('.sheet')
+if (sheet) {
+  const body = sheet.querySelector('.sheet-body')
+  const close = () => { sheet.classList.remove('in'); document.documentElement.classList.remove('modal-open'); setTimeout(() => { sheet.hidden = true }, 250) }
+  for (const card of document.querySelectorAll('[data-plus]')) {
+    card.addEventListener('click', () => {
+      const tpl = document.getElementById(card.dataset.plus)
+      body.innerHTML = tpl.innerHTML
+      sheet.hidden = false
+      document.documentElement.classList.add('modal-open')
+      void sheet.offsetWidth
+      sheet.classList.add('in')
+      sheet.querySelector('.sheet-x').focus()
+    })
+  }
+  sheet.querySelector('.sheet-x').addEventListener('click', close)
+  sheet.addEventListener('pointerdown', (e) => { if (e.target === sheet) close() })
+  addEventListener('keydown', (e) => { if (e.key === 'Escape' && !sheet.hidden) close() })
+}
