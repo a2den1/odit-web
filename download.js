@@ -68,11 +68,16 @@
   }
 
   function assetButtons(r, big) {
-    return r.assets.map((a) => {
+    // more than one installer now, so each button says which one it is
+    const exes = r.assets.filter((a) => /\.exe$/i.test(a.name)).length
+    return r.assets.map((a, i) => {
       const exe = /\.exe$/i.test(a.name)
-      return `<button class="${big && exe ? 'btn' : 'btn btn-quiet'}" data-download="${a.id}" data-label="${esc(r.version)}">
+      const name = a.label || (exe
+        ? (exes > 1 ? a.name.replace(/-[\d.]+-setup\.exe$/i, '').replace(/-/g, ' ') : (big ? '다운로드' : '설치 파일'))
+        : a.name)
+      return `<button class="${big && exe && i === 0 ? 'btn' : 'btn btn-quiet'}" data-download="${a.id}" data-label="${esc(r.version)}">
         <i class="${exe ? 'fa-brands fa-windows' : 'fa-solid fa-file-arrow-down'}"></i>
-        <span>${exe ? (big ? '다운로드' : '설치 파일') : esc(a.name)}</span><small>${mb(a.size)}</small>
+        <span>${esc(name)}</span><small>${mb(a.size)}</small>
       </button>`
     }).join('')
   }
