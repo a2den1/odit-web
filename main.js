@@ -98,3 +98,37 @@ if (reduce || !('IntersectionObserver' in window)) {
   heads.forEach((el) => io.observe(el))
   reveals.forEach((el) => io.observe(el))
 }
+
+// Hero screenshot lies back and straightens up as the page scrolls.
+const tilt = document.querySelector('[data-tilt]')
+if (tilt && !reduce) {
+  const upd = () => {
+    const r = tilt.getBoundingClientRect()
+    const p = Math.min(1, Math.max(0, (r.top - innerHeight * 0.15) / (innerHeight * 0.55)))
+    tilt.style.setProperty('--t', p.toFixed(3))
+  }
+  addEventListener('scroll', upd, { passive: true })
+  addEventListener('resize', upd)
+  upd()
+} else if (tilt) tilt.style.setProperty('--t', 0)
+
+// Numbers count up the first time they come into view.
+const stats = document.querySelector('[data-stats]')
+if (stats && 'IntersectionObserver' in window && !reduce) {
+  const nums = [...stats.querySelectorAll('[data-count]')]
+  nums.forEach((n) => { n.textContent = '0' })
+  const so = new IntersectionObserver((es) => {
+    if (!es.some((e) => e.isIntersecting)) return
+    so.disconnect()
+    const t0 = performance.now()
+    const step = (now) => {
+      const k = Math.min(1, (now - t0) / 1200)
+      const e = 1 - Math.pow(1 - k, 3)
+      nums.forEach((n) => { n.textContent = String(Math.round(Number(n.dataset.count) * e)) })
+      if (k < 1) requestAnimationFrame(step)
+    }
+    requestAnimationFrame(step)
+    setTimeout(() => nums.forEach((n) => { n.textContent = n.dataset.count }), 1600)
+  }, { threshold: 0.4 })
+  so.observe(stats)
+}

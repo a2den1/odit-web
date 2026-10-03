@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ODIT</title>
   <meta name="description" content="계정도 클라우드도 없이 내 PC에서 돌아가는 Windows 영상 편집기.">
-  <meta name="theme-color" content="#131316">
+  <meta name="theme-color" content="#0c0c0e">
   <meta property="og:title" content="ODIT">
   <meta property="og:description" content="영상 편집의 모든 것, 내 PC에서 가볍게.">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="/assets/shots/editor.webp">
+  <meta property="og:image" content="/assets/v2/hero.webp">
   <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/assets/icon.png">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
@@ -19,7 +19,7 @@
   <script>document.documentElement.classList.add('js')</script>
   <script src="/main.js" defer></script>
 </head>
-<body>
+<body class="land">
 
 <header class="top">
   <div class="top-inner">
@@ -28,76 +28,105 @@
       <a href="/#features">기능</a>
       <a href="/help">도움말</a>
       <a href="/report">버그 제보</a>
-      <a href="/download">다운로드</a>
+      <a class="tab-cta" href="/download">다운로드</a>
     </nav>
   </div>
 </header>
 
 <main>
 
-  <section class="hero">
+  <section class="v3-hero">
     <h1 data-anim="focus">영상 편집의 모든 것<br>내 PC에서 가볍게</h1>
-    <a class="btn" href="/download"><i class="fa-brands fa-windows"></i><span>ODIT 받기</span></a>
-    <figure class="frame hero-shot reveal">
-      <img src="/assets/shots/editor.webp" srcset="/assets/shots/editor-sm.webp 800w, /assets/shots/editor.webp 1600w" sizes="(max-width: 1120px) 100vw, 1080px" alt="ODIT 편집 화면" width="1600" height="980" fetchpriority="high">
-    </figure>
+    <a class="btn btn-lg" href="/download"><i class="fa-brands fa-windows"></i><span>ODIT 받기</span></a>
+    <div class="tilt" data-tilt>
+      <img src="/assets/v2/hero.webp" srcset="/assets/v2/hero-sm.webp 800w, /assets/v2/hero.webp 1600w" sizes="(max-width: 1200px) 100vw, 1160px" alt="ODIT 편집 화면" width="1600" height="980" fetchpriority="high">
+    </div>
   </section>
 
-  <section class="big" id="features">
-    <h2 data-anim="drag">끌어다 놓고 자르면<br>그걸로 충분해요</h2>
-    <figure class="frame reveal"><img loading="lazy" src="/assets/shots/timeline.webp" srcset="/assets/shots/timeline-sm.webp 800w, /assets/shots/timeline.webp 1600w" sizes="(max-width: 1120px) 100vw, 1080px" alt="타임라인" width="1600" height="980"></figure>
+  <section class="stats" data-stats>
+    <div class="stat"><b data-count="57">57</b><span>효과</span></div>
+    <div class="stat"><b data-count="26">26</b><span>전환</span></div>
+    <div class="stat"><b data-count="26">26</b><span>혼합 모드</span></div>
+    <div class="stat"><b data-count="41">41</b><span>움직임 곡선</span></div>
   </section>
 
-  <section class="big">
-    <h2 data-anim="curve">움직임은<br>곡선으로 다듬고</h2>
-    <figure class="frame reveal"><img loading="lazy" src="/assets/shots/graph.webp" srcset="/assets/shots/graph-sm.webp 800w, /assets/shots/graph.webp 1600w" sizes="(max-width: 1120px) 100vw, 1080px" alt="그래프 에디터" width="1600" height="980"></figure>
+  <section class="bento" id="features">
+
+    <article class="tile w12 reveal">
+      <h2 data-anim="drag">끌어다 놓고 자르면<br>그걸로 충분해요</h2>
+      <img class="shot wide" loading="lazy" src="/assets/v2/timeline.webp" srcset="/assets/v2/timeline-sm.webp 800w, /assets/v2/timeline.webp 1600w" sizes="(max-width: 1200px) 100vw, 1160px" alt="타임라인" width="1600" height="304">
+    </article>
+
+    <article class="tile w7 reveal">
+      <h2 data-anim="curve">움직임은<br>곡선으로 다듬고</h2>
+      <img class="shot" loading="lazy" src="/assets/v2/graph.webp" alt="그래프 에디터" width="960" height="304">
+    </article>
+
+    <article class="tile w5 tall reveal">
+      <h2 data-anim="color">룩 하나로<br>색감을 통째로</h2>
+      <img class="shot" loading="lazy" src="/assets/v2/looks.webp" alt="룩 목록" width="300" height="620">
+    </article>
+
+    <article class="tile w5 reveal">
+      <h2 data-anim="bounce">자막이 길어지면<br>아이콘도 따라 밀려나게</h2>
+      <img class="shot" style="object-position:center" loading="lazy" src="/assets/v2/attach.webp" alt="옆에 붙이기" width="740" height="300">
+    </article>
+
+    <article class="tile w7 reveal">
+      <h2 data-anim="mask">보여줄 곳만<br>남기는 마스크</h2>
+      <img class="shot" loading="lazy" src="/assets/v2/mask.webp" srcset="/assets/v2/mask-sm.webp 650w, /assets/v2/mask.webp 1300w" sizes="(max-width: 900px) 100vw, 680px" alt="마스크" width="1300" height="610">
+    </article>
+
+    <article class="tile w6 reveal">
+      <h2 data-anim="eq">소리에 맞춰<br>움직이는 스펙트럼</h2>
+      <img class="shot" loading="lazy" src="/assets/v2/spectrum.webp" srcset="/assets/v2/spectrum-sm.webp 495w, /assets/v2/spectrum.webp 990w" sizes="(max-width: 900px) 100vw, 580px" alt="오디오 스펙트럼" width="990" height="610">
+    </article>
+
+    <article class="tile w6 reveal">
+      <h2 data-anim="ghost">앞뒤 프레임을<br>겹쳐 보면서</h2>
+      <img class="shot" loading="lazy" src="/assets/v2/onion.webp" srcset="/assets/v2/onion-sm.webp 495w, /assets/v2/onion.webp 990w" sizes="(max-width: 900px) 100vw, 580px" alt="양파 스킨" width="990" height="610">
+    </article>
+
+    <article class="tile w7 reveal">
+      <h2 data-anim="type">글자에도<br>연출을</h2>
+      <img class="shot" loading="lazy" src="/assets/v2/text.webp" srcset="/assets/v2/text-sm.webp 650w, /assets/v2/text.webp 1300w" sizes="(max-width: 900px) 100vw, 680px" alt="텍스트" width="1300" height="610">
+    </article>
+
+    <article class="tile w5 tall reveal">
+      <h2 data-anim="shine">혼합 모드<br>26가지</h2>
+      <img class="shot" style="object-position:center bottom" loading="lazy" src="/assets/v2/blend.webp" alt="혼합 모드" width="312" height="610">
+    </article>
+
+    <article class="tile w6 reveal">
+      <h2 data-anim="mold">도형은<br>손으로 빚듯이</h2>
+      <img class="shot" loading="lazy" src="/assets/v2/shape.webp" srcset="/assets/v2/shape-sm.webp 650w, /assets/v2/shape.webp 1300w" sizes="(max-width: 900px) 100vw, 580px" alt="도형 편집" width="1300" height="610">
+    </article>
+
+    <article class="tile w6 reveal">
+      <h2 data-anim="calc">값과 값을<br>수식으로 잇고</h2>
+      <img class="shot" loading="lazy" src="/assets/v2/variables.webp" srcset="/assets/v2/variables-sm.webp 645w, /assets/v2/variables.webp 1290w" sizes="(max-width: 900px) 100vw, 580px" alt="변수" width="1290" height="610">
+    </article>
+
+    <article class="tile w7 reveal">
+      <h2 data-anim="zoom">어디로 보낼지 고르면<br>바로 내보내기</h2>
+      <img class="shot fit" loading="lazy" src="/assets/v2/export.webp" alt="내보내기 창" width="900" height="484">
+    </article>
+
+    <article class="tile w5 reveal">
+      <h2 data-anim="flip">내 손에 맞게<br>설정까지</h2>
+      <img class="shot fit" loading="lazy" src="/assets/v2/settings.webp" alt="설정 창" width="760" height="288">
+    </article>
+
   </section>
 
-  <section class="big">
-    <h2 data-anim="mold">도형은<br>손으로 빚듯이</h2>
-    <figure class="frame reveal"><img loading="lazy" src="/assets/shots/shape.webp" srcset="/assets/shots/shape-sm.webp 800w, /assets/shots/shape.webp 1600w" sizes="(max-width: 1120px) 100vw, 1080px" alt="꼭짓점 편집" width="1600" height="980"></figure>
-  </section>
-
-  <section class="big">
-    <h2 data-anim="color">색감은<br>한 번에 입히고</h2>
-    <figure class="frame reveal"><img loading="lazy" src="/assets/shots/effects.webp" srcset="/assets/shots/effects-sm.webp 800w, /assets/shots/effects.webp 1600w" sizes="(max-width: 1120px) 100vw, 1080px" alt="룩 목록" width="1600" height="980"></figure>
-  </section>
-
-  <section class="grid">
-    <article class="card reveal">
-      <h3 data-anim="eq">소리에 맞춰<br>움직이는 스펙트럼</h3>
-      <img loading="lazy" src="/assets/shots/spectrum-sm.webp" alt="오디오 스펙트럼" width="800" height="490">
-    </article>
-    <article class="card reveal">
-      <h3 data-anim="mask">보여줄 곳만<br>남기는 마스크</h3>
-      <img loading="lazy" src="/assets/shots/mask-sm.webp" alt="마스크" width="800" height="490">
-    </article>
-    <article class="card reveal">
-      <h3 data-anim="type">글자에도<br>연출을</h3>
-      <img loading="lazy" src="/assets/shots/text-sm.webp" alt="텍스트" width="800" height="490">
-    </article>
-    <article class="card reveal">
-      <h3 data-anim="ghost">앞뒤 프레임을<br>겹쳐 보면서</h3>
-      <img loading="lazy" src="/assets/shots/onion-sm.webp" alt="양파 스킨" width="800" height="490">
-    </article>
-    <article class="card reveal">
-      <h3 data-anim="calc">값과 값을<br>수식으로 잇고</h3>
-      <img loading="lazy" src="/assets/shots/variables-sm.webp" alt="변수" width="800" height="490">
-    </article>
-    <article class="card reveal">
-      <h3 data-anim="zoom">하드웨어 가속으로<br>빠르게 내보내기</h3>
-      <img loading="lazy" src="/assets/shots/export.webp" alt="내보내기" width="880" height="440">
-    </article>
-  </section>
-
-  <section class="plain">
+  <section class="v3-say">
     <h2 data-anim="drop">계정도 클라우드도 없이<br>내 PC에서만</h2>
   </section>
 
-  <section class="end">
-    <img class="reveal" src="/assets/logo.svg" alt="" width="88" height="88">
+  <section class="v3-end">
+    <img class="reveal" src="/assets/logo.svg" alt="" width="96" height="96">
     <h2 data-anim="clap">첫 영상을<br>ODIT로 만들어 보세요</h2>
-    <a class="btn" href="/download"><i class="fa-brands fa-windows"></i><span>ODIT 받기</span></a>
+    <a class="btn btn-lg" href="/download"><i class="fa-brands fa-windows"></i><span>ODIT 받기</span></a>
   </section>
 
 </main>
