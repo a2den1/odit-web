@@ -47,7 +47,11 @@ http.createServer(async (req, res) => {
   if (!path.extname(file) && fs.existsSync(file + '.html')) file += '.html'
   else if (!path.extname(file) && fs.existsSync(path.join(file, 'index.html'))) file = path.join(file, 'index.html')
   fs.readFile(file, (err, buf) => {
-    if (err) { res.statusCode = 404; return res.end('not found') }
+    if (err) {
+      res.statusCode = 404
+      res.setHeader('Content-Type', TYPES['.html'])
+      return fs.createReadStream(path.join(root, '404.html')).on('error', () => res.end('not found')).pipe(res)
+    }
     res.setHeader('Content-Type', TYPES[path.extname(file)] || 'application/octet-stream')
     res.setHeader('Cache-Control', 'no-store')
     res.end(buf)

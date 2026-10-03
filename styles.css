@@ -291,6 +291,12 @@ html.modal-open { overflow: hidden; }
 .thanks .modal-title { padding-right: 0; }
 .thanks .btn { margin-top: 26px; width: 100%; }
 
+/* ════════════════ 404 ════════════════ */
+.nf { min-height: calc(100vh - 52px - 140px); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 80px var(--gutter); }
+.nf-code { font-size: clamp(96px, 16vw, 180px); line-height: 1; font-weight: 800; letter-spacing: -0.06em; background: linear-gradient(180deg, #fff, #5a5a60); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.nf h1 { margin-top: 20px; font-size: clamp(24px, 3vw, 32px); font-weight: 700; letter-spacing: -0.03em; }
+.nf .btn { margin-top: 36px; }
+
 /* ════════════════ report ════════════════ */
 .report { max-width: 640px; margin: 0 auto; padding: 88px var(--gutter) 140px; min-height: calc(100vh - 160px); }
 .report h1, .credits h1 { font-size: clamp(34px, 4.6vw, 48px); line-height: 1.15; font-weight: 700; letter-spacing: -0.035em; margin-bottom: 40px; }

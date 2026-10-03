@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ODIT 크레딧</title>
+  <title>페이지를 찾을 수 없어요 · ODIT</title>
   <meta name="theme-color" content="#0c0c0e">
   <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/assets/icon.png">
@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
   <link rel="stylesheet" href="/styles.css">
+  <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
 
@@ -25,40 +26,18 @@
   </div>
 </header>
 
-<main class="credits">
-  <h1>크레딧</h1>
-
-  <figure class="credit-drawing"><img src="/assets/credits/naming.png" alt="이름 지은 사람 그림" width="800" height="600"></figure>
-
-  <article class="credit-maker">
-    <img class="maker-pic" src="/assets/credits/aiden.png" alt="AIDEN" width="512" height="512">
-    <div class="maker-text">
-      <p class="credit-role">제작</p>
-      <h2>AIDEN</h2>
-    </div>
-    <button class="discord" type="button" data-copy="_a2den.">
-      <i class="fa-brands fa-discord"></i><span>_a2den.</span>
-    </button>
-  </article>
+<main class="nf">
+  <p class="nf-code">404</p>
+  <h1>페이지를 찾을 수 없어요</h1>
+  <a class="btn btn-lg" href="/download"><i class="fa-brands fa-windows"></i><span>ODIT 받기</span></a>
 </main>
 
 <footer class="foot">
   <img class="foot-tg" src="/assets/twelvegames.png" alt="TwelveGames" width="139" height="72">
   <span>© 2026 ODIT</span>
   <a href="/3d">ODIT 3D</a>
-  <a href="/credits" aria-current="page">크레딧</a>
+  <a href="/credits">크레딧</a>
 </footer>
 
-<script>
-  for (const b of document.querySelectorAll('[data-copy]')) {
-    b.addEventListener('click', async () => {
-      const label = b.querySelector('span')
-      try { await navigator.clipboard.writeText(b.dataset.copy) } catch { return }
-      label.textContent = '복사했어요'
-      b.classList.add('done')
-      setTimeout(() => { label.textContent = b.dataset.copy; b.classList.remove('done') }, 1400)
-    })
-  }
-</script>
 </body>
 </html>
