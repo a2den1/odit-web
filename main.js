@@ -56,6 +56,23 @@ for (const z of document.querySelectorAll('[data-zoom]')) {
   upd()
 }
 
+/* ── promo video: pause button, rests while off screen ── */
+for (const v of document.querySelectorAll('video.promo')) {
+  const btn = v.parentElement.querySelector('.promo-play')
+  let wanted = !reduce, seen = true
+  const sync = () => {
+    if (wanted && seen) v.play().catch(() => {})
+    else v.pause()
+    btn.classList.toggle('paused', !wanted)
+    btn.querySelector('i').className = wanted ? 'fa-solid fa-pause' : 'fa-solid fa-play'
+    btn.setAttribute('aria-label', wanted ? '일시정지' : '재생')
+  }
+  if (reduce) v.removeAttribute('autoplay')
+  btn.addEventListener('click', () => { wanted = !wanted; sync() })
+  if ('IntersectionObserver' in window) new IntersectionObserver(([e]) => { seen = e.isIntersecting; sync() }).observe(v)
+  sync()
+}
+
 /* ── carousel: snap, auto-advance with a filling dot, pause, arrows, swipe ── */
 for (const car of document.querySelectorAll('[data-carousel]')) {
   const track = car.querySelector('.car-track')
