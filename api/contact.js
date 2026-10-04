@@ -4,6 +4,7 @@ const { send, readBody, verifyCaptcha, clientIp, sendDM, clean, SITEKEY } = requ
 // 허용할 출처는 CONTACT_ORIGINS(쉼표로 구분)로 더 넣을 수 있다.
 const ALLOWED = [
   'https://aiden-portfolio-beta.vercel.app',
+  'https://a2den.kro.kr',
   'http://localhost:5200',
   ...String(process.env.CONTACT_ORIGINS || '').split(',').map((s) => s.trim()).filter(Boolean),
 ]
